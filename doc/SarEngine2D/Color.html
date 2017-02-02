@@ -21,10 +21,10 @@
     <div id="main">
         <div id="pos">
             <a class="posLink" href="/doc/SarEngine2D">SarEngine2D</a>
-            <a class="posLink" href="/doc/SarEngine2D/Circle.html">Circle</a>
+            <a class="posLink" href="/doc/SarEngine2D/Color.html">Color</a>
         </div>
         <div>
-            <p id="name">Circle</p>
+            <p id="name">Color</p>
         </div>
         <div id="mainContent">
             <div id="left">
@@ -86,16 +86,16 @@
             </div>
             <div id="center">
                 <div id="description" class="part">
-                    圆。可以作为渲染对象。可以作为物理碰撞模拟的碰撞体模型。
+                    用RGBA（红色分量、绿色分量、蓝色分量和不透明度）表示颜色的类。可以与CSS颜色值之间相互转换。
                 </div>
                 <div id="syntax" class="part">
                     <p class="title">Syntax</p>
                     <div class="content">
                         <pre class="brush: js;">
 //from global
-var circle = new Circle(radius);
+var Color = new Color(red, green, blue, alpha);
 //from SarEngine
-var circle = new SarEngine.Colliders.Circle(radius);
+var Color = SarEngine.Color(red, green, blue, alpha);
 </pre>
                     </div>
                 </div>
@@ -103,8 +103,20 @@ var circle = new SarEngine.Colliders.Circle(radius);
                     <p class="title">Parameters</p>
                     <div class="content">
                         <div class="item">
-                            <div class="name"><a class="type">Number</a> radius</div>
-                            <div class="description">圆的半径</div>
+                            <div class="name"><a class="type">Number</a> red</div>
+                            <div class="description">红色分量。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">Number</a> green</div>
+                            <div class="description">绿色分量。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">Number</a> blue</div>
+                            <div class="description">蓝色分量。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">Number</a> alpha</div>
+                            <div class="description">不透明度。</div>
                         </div>
 
                     </div>
@@ -114,72 +126,24 @@ var circle = new SarEngine.Colliders.Circle(radius);
                         <p class="title">Properties</p>
                         <div class="content">
                             <div class="item">
-                                <a class="name" href="Circle/angV.html">angV</a>
-                                <div class="description">Numver 转动角速度。</div>
+                                <a class="name" href="/doc/SarEngine2D/alpha.html">alpha</a>
+                                <div class="description">Number 不透明度，取值范围0~1。大于1将被重设为1，小于0将被重设为0。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Circle/center.html">center</a>
-                                <div class="description">Position 几何变换的中心。</div>
+                                <a class="name" href="/doc/SarEngine2D/blue.html">blue</a>
+                                <div class="description">Number 蓝色分量，取值范围0~255的整数，大于255将被重设为255，小于0将被重设为0。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Circle/coordinate.html">coordinate</a>
-                                <div class="description">Coordinate 圆所在的坐标系。</div>
+                                <a class="name" href="/doc/SarEngine2D/green.html">green</a>
+                                <div class="description">Number 绿色分量，取值范围0~255的整数，大于255将被重设为255，小于0将被重设为0。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Circle/dff.html">dff</a>
-                                <div class="description">Number 圆表面滑动摩擦系数，取值范围>=0。</div>
+                                <a class="name" href="/doc/SarEngine2D/red.html">red</a>
+                                <div class="description">Number 红色分量，取值范围0~255的整数，大于255将被重设为255，小于0将被重设为0。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Circle/e.html">e</a>
-                                <div class="description">Number 圆碰撞弹性恢复系数，取值范围0~1，若大于1将可能违背能量守恒定律。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/fillStyle.html">fillStyle</a>
-                                <div class="description">Color 圆的填充颜色。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/I.html">I</a>
-                                <div class="description">Number 圆的转动惯量。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/landed.html">landed</a>
-                                <div class="description">Boolean 表示该碰撞体是否着地。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/o.html">o</a>
-                                <div class="description">Point 圆心相对center的位置坐标。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/position.html">position</a>
-                                <div class="description">Position 圆的位置坐标。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/r.html">r</a>
-                                <div class="description">Number 圆的半径。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/rigidBody.html">rigidBody</a>
-                                <div class="description">Boolean 表示该圆是否具有刚体特性，具有刚体特性的碰撞体将参与物理碰撞模拟。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/rotation.html">rotation</a>
-                                <div class="description">Number 表示圆的旋转弧度。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/soft.html">soft</a>
-                                <div class="description">Boolean 表示该圆的碰撞模型是否为柔性碰撞。柔性碰撞将允许一定程度的刚体交错，并表现为具有一定的弹性。否则将严格避免刚体交错，可能导致计算异常。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/static.html">static</a>
-                                <div class="description">Boolean 表示该圆的动量是否可以改变，值为true则将严格保持当前的速度运动并无视一切弹性碰撞，两个static都为true的刚体相互碰撞时将无视彼此直接穿透。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/strokeStyle.html">strokeStyle</a>
-                                <div class="description">Color 圆的边线颜色。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Circle/strokeWidth.html">strokeWidth</a>
-                                <div class="description">Number 圆的边线线宽。</div>
+                                <a class="name static" href="/doc/SarEngine2D/version.html">version</a>
+                                <div class="description">Number 版本号，内部使用。</div>
                             </div>
 
                         </div>
@@ -188,44 +152,34 @@ var circle = new SarEngine.Colliders.Circle(radius);
                         <p class="title">Methods</p>
                         <div class="content">
                             <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/changeCoordinate.html">changeCoordinate</a>(cooridnate)</div>
-                                <div class="description">改变圆所在的坐标系，并将相关数值映射到新的坐标系。</div>
+                                <div class="name"><a class="funcName" href="/doc/SarEngine2D/copy.html">copy</a>()</div>
+                                <div class="description">复制一个相同的颜色实例。</div>
                             </div>
                             <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/collide.html">collide</a>(self, target, dt)</div>
-                                <div class="description">进行物理碰撞模拟计算。该函数由内部自动调用。</div>
+                                <div class="name"><a class="funcName" href="/doc/SarEngine2D/equal.html">equal</a>(color)</div>
+                                <div class="description">判断两个颜色是否表示为同一种颜色。</div>
                             </div>
                             <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/copy.html">copy</a>()</div>
-                                <div class="description">复制一个相同的圆的实例。</div>
+                                <div class="name"><a class="funcName" href="/doc/SarEngine2D/fromString.html">fromString</a>(cssColorString)</div>
+                                <div class="description">你听我解释</div>
                             </div>
                             <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/isCollideWith.html">isCollideWith</a>(collider, v1, v2, dt)</div>
-                                <div class="description">与指定的碰撞体进行碰撞检测计算，需要指定目标碰撞模型、该圆的速度、目标碰撞体的速度和模拟的检测的时间长度。</div>
+                                <div class="name"><a class="funcName" href="/doc/SarEngine2D/random.html">random</a>()</div>
+                                <div class="description">你听我解释</div>
                             </div>
                             <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/isCross.html">isCross</a>(onj)</div>
-                                <div class="description">检测该圆是否与指定的几何图形相交。</div>
+                                <div class="name"><a class="funcName" href="/doc/SarEngine2D/toString.html">toString</a>()</div>
+                                <div class="description">你听我解释</div>
                             </div>
+
+                        </div>
+                    </div>
+                    <div id="event" class="part">
+                        <p class="title">Events</p>
+                        <div class="content">
                             <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/moveTo.html">moveTo</a>(x, y)</div>
-                                <div class="description">移动到指定的坐标。</div>
-                            </div>
-                            <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/render.html">render</a>(graphics, x, y, r, dt, camera, output)</div>
-                                <div class="description">渲染到指定的Graphics绘图接口。</div>
-                            </div>
-                            <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/rotate.html">rotate</a>(rad, x, y)</div>
-                                <div class="description">绕定点旋转指定的弧度，若未指定x和y则默认绕center旋转。</div>
-                            </div>
-                            <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/setCenter.html">setCenter</a>(x, y)</div>
-                                <div class="description">重设该圆的几何变换中心坐标，圆的实际位置不改变。</div>
-                            </div>
-                            <div class="item">
-                                <div class="name"><a class="funcName" href="Circle/setCoordinate.html">setCoordinate</a>(cooridnate)</div>
-                                <div class="description">在保留相关数值不变的前提下设置圆的坐标系。</div>
+                                <a class="name" href="this/member.html">member</a>
+                                <div class="description">description</div>
                             </div>
                         </div>
                     </div>

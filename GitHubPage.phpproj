@@ -23,6 +23,9 @@
     <Content Include="doc\SarEngine2D\Background.html" />
     <Content Include="doc\SarEngine2D\Camera.html" />
     <Content Include="doc\SarEngine2D\Circle.html" />
+    <Content Include="doc\SarEngine2D\CollideGroup.html" />
+    <Content Include="doc\SarEngine2D\Colliders.html" />
+    <Content Include="doc\SarEngine2D\Color.html" />
     <Content Include="doc\SarEngine2D\index.html" />
     <Content Include="doc\SarEngine2D\part\guide.html" />
     <Content Include="doc\SarEngine2D\part\outline.html" />
