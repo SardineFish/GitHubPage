@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http:Audio/www.w3.org/1999/xhtml">
 <head>
     <title>SarEngine2D</title>
     <script type="text/javascript" src="/lib/syntaxHighlighter/scripts/shCore.js"></script>
@@ -11,7 +11,7 @@
 <body>
     <div id="topArea">
         <div id="topCenter">
-            <img id="logo" src="http://img.sardinefish.com/423">
+            <img id="logo" src="http:Audio/img.sardinefish.com/423">
             <div id="logoText">
                 <p id="logoText1">SarEngine2D</p>
                 <p id="logoText2">Document</p>
@@ -21,10 +21,10 @@
     <div id="main">
         <div id="pos">
             <a class="posLink" href="/doc/SarEngine2D">SarEngine2D</a>
-            <a class="posLink" href="/doc/SarEngine2D/Arc.html">Arc</a>
+            <a class="posLink" href="/doc/SarEngine2D/Audio.html">Audio</a>
         </div>
         <div>
-            <p id="name">Arc</p>
+            <p id="name">Audio</p>
         </div>
         <div id="mainContent">
             <div id="left">
@@ -86,16 +86,18 @@
             </div>
             <div id="center">
                 <div id="description" class="part">
-                    可渲染的一段圆弧。
+                    可播放的音频对象。
                 </div>
                 <div id="syntax" class="part">
                     <p class="title">Syntax</p>
                     <div class="content">
                         <pre class="brush: js;">
-//from global
-var arc=new Arc(radius, startAng, endAng, antiCW);
-//from SarEngine
-var arc=new SarEngine.Arc(r, startAng, endAng, antiCW);
+Audio/Create by HTML Audio Element
+var audio = new SarEngine.Audio(audioElement);
+Audio/Create by url of the audio
+var audio = new SarEngine.Audio(url);
+Audio/Create by Blob;
+var audio = new SarEngine.Audio(blob);
 </pre>
                     </div>
                 </div>
@@ -103,102 +105,68 @@ var arc=new SarEngine.Arc(r, startAng, endAng, antiCW);
                     <p class="title">Parameters</p>
                     <div class="content">
                         <div class="item">
-                            <div class="name"><a class="type">Number</a> radius</div>
-                            <div class="description">圆弧的半径。</div>
+                            <div class="name"><a class="type">AudioElement</a> audioElement</div>
+                            <div class="description">一个HTML Audio Element对象。</div>
                         </div>
                         <div class="item">
-                            <div class="name"><a class="type">Number</a> startAng</div>
-                            <div class="description">圆弧的起始弧度。</div>
+                            <div class="name"><a class="type">String</a> url</div>
+                            <div class="description">音频资源的url。</div>
                         </div>
                         <div class="item">
-                            <div class="name"><a class="type">Number</a> endAng</div>
-                            <div class="description">圆弧的终止弧度</div>
-                        </div>
-                        <div class="item">
-                            <div class="name"><a class="type">Boolean</a> antiCW</div>
-                            <div class="description">是否为顺时针。</div>
+                            <div class="name"><a class="type">Blob</a> blob</div>
+                            <div class="description">表示音频资源的Blob对象。</div>
                         </div>
                     </div>
                 </div>
                 <div id="member">
-                    <div id="method" class="part">
-                        <p class="title">Methods</p>
-                        <div class="content">
-
-                        </div>
-                    </div>
                     <div id="property" class="part">
                         <p class="title">Properties</p>
                         <div class="content">
+                            <div class="item">
+                                <a class="name" href="Audio/audio.html">audio</a>
+                                <div class="description">AudioElement 表示该音频的HTML AudioElement对象。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="Audio/compelete.html">compelete</a>
+                                <div class="description">Boolean 表示该音频资源是否已经加载完毕。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="Audio/currentTime.html">currentTime</a>
+                                <div class="description">Number 表示该音频播放经过的时间，单位为秒。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="Audio/duration.html">duration</a>
+                                <div class="description">Number 表示该音频的总时长，单位为秒。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="Audio/playing.html">playing</a>
+                                <div class="description">Boolean 表示该音频是否处于播放状态。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="Audio/src.html">src</a>
+                                <div class="description">String 表示该音频的资源url。</div>
+                            </div>
 
-                            <div class="item">
-                                <a class="name" href="Arc/antiCW.html">antiCW</a>
-                                <div class="description">Boolean 表示是否为顺时针构造。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/cooridnate.html">cooridnate</a>
-                                <div class="description">Coordinate 表示该圆弧所在的坐标系。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/end.html">end</a>
-                                <div class="description">Number 表示该圆弧的终止弧度。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/fillStyle.html">fillStyle</a>
-                                <div class="description">Color 用于填充这段圆弧的颜色。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/lineCap.html">lineCap</a>
-                                <div class="description">LineCap 圆弧线冒样式。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/o.html">o</a>
-                                <div class="description">Point 圆弧的圆心相对center的位置。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/position.html">position</a>
-                                <div class="description">Point 圆弧的位置坐标。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/r.html">r</a>
-                                <div class="description">Number 圆弧的半径。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/start.html">start</a>
-                                <div class="description">Number 圆弧的起始弧度。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/strokeStyle.html">strokeStyle</a>
-                                <div class="description">Color 用于绘制圆弧弧线的颜色。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/strokeWidth.html">strokeWidth</a>
-                                <div class="description">Number 绘制圆弧弧线的线宽。</div>
-                            </div>
                         </div>
                     </div>
                     <div id="method" class="part">
                         <p class="title">Methods</p>
                         <div class="content">
                             <div class="item">
-                                <a class="name" href="Arc/changeCoordinate.html">changeCoordinate(coordinate)</a>
-                                <div class="description">改变圆弧所在的坐标系，并将相关数据映射为等效的目标坐标系中的值。</div>
+                                <a class="name" href="Audio/end.html">end()</a>
+                                <div class="description">结束播放。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Arc/copy.html">copy()</a>
-                                <div class="description">复制一个一致的圆弧实例。</div>
+                                <a class="name" href="Audio/load.html">load(src, callback)</a>
+                                <div class="description">从指定的资源加载音频，并于完成后调用回掉函数。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Arc/render.html">render(graphics, x, y, r, dt, camera, output)</a>
-                                <div class="description">将圆弧渲染到指定的Graphics对象上。</div>
+                                <a class="name" href="Audio/pause.html">pause()</a>
+                                <div class="description">暂定播放。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="Arc/rotate.html">rotate(rad, x, y)</a>
-                                <div class="description">旋转圆弧。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="Arc/setCoordinate.html">setCoordinate(coordinate)</a>
-                                <div class="description">保持各种数值不变的前提下，设置圆弧所在的坐标系。</div>
+                                <a class="name" href="Audio/play.html">play()</a>
+                                <div class="description">开始播放。</div>
                             </div>
 
                         </div>

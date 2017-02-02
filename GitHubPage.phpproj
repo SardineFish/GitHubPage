@@ -18,6 +18,9 @@
   <ItemGroup>
     <Content Include="doc\SarEngine2D\Align.html" />
     <Content Include="doc\SarEngine2D\Arc.html" />
+    <Content Include="doc\SarEngine2D\Audio.html" />
+    <Content Include="doc\SarEngine2D\AudioTrack.html" />
+    <Content Include="doc\SarEngine2D\Background.html" />
     <Content Include="doc\SarEngine2D\index.html" />
     <Content Include="doc\SarEngine2D\part\guide.html" />
     <Content Include="doc\SarEngine2D\part\outline.html" />
