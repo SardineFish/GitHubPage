@@ -3,8 +3,8 @@
 <head>
     <title>SarEngine2D</title>
     <script type="text/javascript" src="/lib/syntaxHighlighter/scripts/shCore.js"></script>
-	<script type="text/javascript" src="/lib/syntaxHighlighter/scripts/shBrushJScript.js"></script>
-	<link type="text/css" rel="stylesheet" href="/lib/syntaxHighlighter/styles/shCoreDefault.css"/>
+    <script type="text/javascript" src="/lib/syntaxHighlighter/scripts/shBrushJScript.js"></script>
+    <link type="text/css" rel="stylesheet" href="/lib/syntaxHighlighter/styles/shCoreDefault.css" />
     <link type="text/css" rel="stylesheet" href="/doc/SarEngine2D/style/doc.css" />
     <style title=""></style>
 </head>
@@ -21,10 +21,10 @@
     <div id="main">
         <div id="pos">
             <a class="posLink" href="/doc/SarEngine2D">SarEngine2D</a>
-            <a class="posLink" href="/doc/SarEngine2D/Align.html">Align</a>
+            <a class="posLink" href="/doc/SarEngine2D/Arc.html">Arc</a>
         </div>
         <div>
-            <p id="name">Align</p>
+            <p id="name">Arc</p>
         </div>
         <div id="mainContent">
             <div id="left">
@@ -86,65 +86,121 @@
             </div>
             <div id="center">
                 <div id="description" class="part">
-                    表示对齐位置的枚举。
+                    可渲染的一段圆弧。
                 </div>
                 <div id="syntax" class="part">
                     <p class="title">Syntax</p>
                     <div class="content">
                         <pre class="brush: js;">
-//from window
-window.Align.topLeft(width,height);
+//from global
+var arc=new Arc(radius, startAng, endAng, antiCW);
 //from SarEngine
-SarEngine.Align.center(width,height);
+var arc=new SarEngine.Arc(r, startAng, endAng, antiCW);
 </pre>
                     </div>
                 </div>
-                <div id="return" class="part">
-                    <p class="title">Returns</p>
+                <div id="param" class="part">
+                    <p class="title">Parameters</p>
                     <div class="content">
-                        返回一个Point对象，表示指定的对齐方式到左上角的坐标。
+                        <div class="item">
+                            <div class="name"><a class="type">Number</a> radius</div>
+                            <div class="description">圆弧的半径。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">Number</a> startAng</div>
+                            <div class="description">圆弧的起始弧度。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">Number</a> endAng</div>
+                            <div class="description">圆弧的终止弧度</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">Boolean</a> antiCW</div>
+                            <div class="description">是否为顺时针。</div>
+                        </div>
                     </div>
                 </div>
                 <div id="member">
                     <div id="method" class="part">
                         <p class="title">Methods</p>
                         <div class="content">
+
+                        </div>
+                    </div>
+                    <div id="property" class="part">
+                        <p class="title">Properties</p>
+                        <div class="content">
+
                             <div class="item">
-                                <a class="name" >buttomCenter</a>
-                                <div class="description">到底部中心的对齐。</div>
+                                <a class="name" href="/Arc/antiCW.html">antiCW</a>
+                                <div class="description">Boolean 表示是否为顺时针构造。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >bottomLeft</a>
-                                <div class="description">到左下角的对齐。</div>
+                                <a class="name" href="/Arc/cooridnate.html">cooridnate</a>
+                                <div class="description">Coordinate 表示该圆弧所在的坐标系。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >bottomRight</a>
-                                <div class="description">到右下角的对齐。</div>
+                                <a class="name" href="/Arc/end.html">end</a>
+                                <div class="description">Number 表示该圆弧的终止弧度。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >center</a>
-                                <div class="description">到中心的对齐。</div>
+                                <a class="name" href="/Arc/fillStyle.html">fillStyle</a>
+                                <div class="description">Color 用于填充这段圆弧的颜色。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >middleLeft</a>
-                                <div class="description">到中间左侧的对齐。</div>
+                                <a class="name" href="/Arc/lineCap.html">lineCap</a>
+                                <div class="description">LineCap 圆弧线冒样式。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >middleRight</a>
-                                <div class="description">到中间右侧的对齐。</div>
+                                <a class="name" href="/Arc/o.html">o</a>
+                                <div class="description">Point 圆弧的圆心相对center的位置。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >topCenter</a>
-                                <div class="description">到顶部中心的对齐。</div>
+                                <a class="name" href="/Arc/position.html">position</a>
+                                <div class="description">Point 圆弧的位置坐标。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >topLeft</a>
-                                <div class="description">到左上角的对齐。</div>
+                                <a class="name" href="/Arc/r.html">r</a>
+                                <div class="description">Number 圆弧的半径。</div>
                             </div>
                             <div class="item">
-                                <a class="name" >topRight</a>
-                                <div class="description">到右上角的对齐。</div>
+                                <a class="name" href="/Arc/start.html">start</a>
+                                <div class="description">Number 圆弧的起始弧度。</div>
                             </div>
+                            <div class="item">
+                                <a class="name" href="/Arc/strokeStyle.html">strokeStyle</a>
+                                <div class="description">Color 用于绘制圆弧弧线的颜色。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="/Arc/strokeWidth.html">strokeWidth</a>
+                                <div class="description">Number 绘制圆弧弧线的线宽。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="method" class="part">
+                        <p class="title">Methods</p>
+                        <div class="content">
+                            <div class="item">
+                                <a class="name" href="/Arc/changeCoordinate.html">changeCoordinate(coordinate)</a>
+                                <div class="description">改变圆弧所在的坐标系，并将相关数据映射为等效的目标坐标系中的值。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="/Arc/copy.html">copy()</a>
+                                <div class="description">复制一个一致的圆弧实例。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="/Arc/render.html">render(graphics, x, y, r, dt, camera, output)</a>
+                                <div class="description">将圆弧渲染到指定的Graphics对象上。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="/Arc/rotate.html">rotate(rad, x, y)</a>
+                                <div class="description">旋转圆弧。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="/Arc/setCoordinate.html">setCoordinate(coordinate)</a>
+                                <div class="description">保持各种数值不变的前提下，设置圆弧所在的坐标系。</div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

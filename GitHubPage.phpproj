@@ -17,11 +17,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="doc\SarEngine2D\Align.html" />
+    <Content Include="doc\SarEngine2D\Arc.html" />
     <Content Include="doc\SarEngine2D\index.html" />
     <Content Include="doc\SarEngine2D\part\guide.html" />
     <Content Include="doc\SarEngine2D\part\outline.html" />
     <Content Include="doc\SarEngine2D\style\doc.css" />
-    <Content Include="doc\SarEngine2D\template\index.html" />
+    <Content Include="doc\SarEngine2D\template\template.html" />
     <Content Include="doc\SarEngine2D\Test.txt" />
     <Content Include="games\FlightFight\audio\Explode.mp3" />
     <Content Include="games\FlightFight\audio\Explode.wav" />
@@ -98,7 +99,6 @@
   <ItemGroup>
     <Folder Include="doc\SarEngine2D\" />
     <Folder Include="doc\SarEngine2D\Guide\" />
-    <Folder Include="doc\SarEngine2D\Align\" />
     <Folder Include="doc\SarEngine2D\template\" />
     <Folder Include="doc\SarEngine2D\style\" />
     <Folder Include="doc\SarEngine2D\part\" />

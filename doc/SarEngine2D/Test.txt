@@ -1,9 +1,4 @@
-﻿buttomCenter
-bottomLeft
-bottomRight
-center
-middleLeft
-middleRight
-topCenter
-topLeft
-topRight
+﻿copy
+render
+rotate
+setCoordinate
