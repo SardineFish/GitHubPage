@@ -32,6 +32,7 @@
     <Content Include="doc\SarEngine2D\Font.html" />
     <Content Include="doc\SarEngine2D\Force.html" />
     <Content Include="doc\SarEngine2D\GameObject.html" />
+    <Content Include="doc\SarEngine2D\Graphics.html" />
     <Content Include="doc\SarEngine2D\index.html" />
     <Content Include="doc\SarEngine2D\part\guide.html" />
     <Content Include="doc\SarEngine2D\part\outline.html" />
