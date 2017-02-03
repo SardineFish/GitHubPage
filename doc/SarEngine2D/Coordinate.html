@@ -21,10 +21,10 @@
     <div id="main">
         <div id="pos">
             <a class="posLink" href="/doc/SarEngine2D">SarEngine2D</a>
-            <a class="posLink" href="/doc/SarEngine2D/Colliders.html">Colliders</a>
+            <a class="posLink" href="/doc/SarEngine2D/Coordinate.html">Coordinate</a>
         </div>
         <div>
-            <p id="name">Colliders</p>
+            <p id="name">Coordinate</p>
         </div>
         <div id="mainContent">
             <div id="left">
@@ -87,17 +87,39 @@
             </div>
             <div id="center">
                 <div id="description" class="part">
-                    包含各种碰撞模型。
+                    坐标系。用于描述一个空间内点的位置和向量的参照。利用坐标系可以实现在游戏中用不同的空间参照描述一个位置和向量。一般通过Coordinate.createCartesian函数创建一个平面直角坐标系。通过自定义映射函数构造一个坐标系实例可以实现更多的扩展，例如在游戏中使用三维空间直角坐标系，只需要提供与场景主坐标系的相互映射函数即可。
                 </div>
                 <div id="syntax" class="part">
                     <p class="title">Syntax</p>
                     <div class="content">
                         <pre class="brush: js;">
-SarEngine.Colliders.Circle;
-SarEngine.Colliders.Rectangle;
-SarEngine.Colliders.Polygon;
-//etc.
+//from global
+var coordinate = new Coordinate(pTo, pFrom, vTo, vFrom);    
+//from SarEngine                        
+var coordinate = new SarEngine.Coordinate(pTo, pFrom, vTo, vFrom);
 </pre>
+                    </div>
+                </div>
+                <div id="param" class="part">
+                    <p class="title">Parameters</p>
+                    <div class="content">
+                        <div class="item">
+                            <div class="name"><a class="type">function(x, y)</a> pTo</div>
+                            <div class="description">从场景主坐标系到该坐标系的点的映射函数。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">function(x, y)</a> pFrom</div>
+                            <div class="description">从该坐标系到场景主坐标系的点的映射函数。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">function(x, y)</a> vTo</div>
+                            <div class="description">从场景主坐标系到该坐标系的向量的映射函数。</div>
+                        </div>
+                        <div class="item">
+                            <div class="name"><a class="type">function(x, y)</a> vFrom</div>
+                            <div class="description">从该坐标系到场景主坐标系的向量的映射函数。</div>
+                        </div>
+
                     </div>
                 </div>
                 <div id="member">
@@ -105,24 +127,59 @@ SarEngine.Colliders.Polygon;
                         <p class="title">Classes</p>
                         <div class="content">
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Circle.html">Circle</a>
-                                <div class="description">可渲染，可作为碰撞模型的圆。</div>
+                                <a class="name" href="Coordinate/Axis.html">Axis</a>
+                                <div class="description">坐标系的坐标轴，可渲染。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="property" class="part">
+                        <p class="title">Properties</p>
+                        <div class="content">
+                            <div class="item">
+                                <a class="name static" href="Coordinate/Default.html">Default</a>
+                                <div class="description">Coordinate 静态常量，场景的主坐标系。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Ground.html">Ground</a>
-                                <div class="description">地面。</div>
+                                <a class="name" href="Coordinate/axis.html">axis</a>
+                                <div class="description">Coordinate.Axis 该坐标系的坐标轴。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Polygon.html">Polygon</a>
-                                <div class="description">可渲染，可作为碰撞模型的多边形。</div>
+                                <a class="name" href="Coordinate/pFrom.html">pFrom</a>
+                                <div class="description">从该坐标系到场景主坐标系的点的映射函数。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Rectangle.html">Rectangle</a>
-                                <div class="description">可渲染，可作为碰撞模型的矩形。</div>
+                                <a class="name" href="Coordinate/pTo.html">pTo</a>
+                                <div class="description">从场景主坐标系到该坐标系的点的映射函数。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Wall.html">Wall</a>
-                                <div class="description">墙。</div>
+                                <a class="name" href="Coordinate/vFrom.html">vFrom</a>
+                                <div class="description">从场景主坐标系到该坐标系的向量的映射函数。</div>
+                            </div>
+                            <div class="item">
+                                <a class="name" href="Coordinate/vTo.html">vTo</a>
+                                <div class="description">从该坐标系到场景主坐标系的向量的映射函数。</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="method" class="part">
+                        <p class="title">Methods</p>
+                        <div class="content">
+                            <div class="item">
+                                <div class="name static"><a class="funcName" href="Coordinate/createCartesian.html">createCartesian</a>(originX, originY, unitX, unitY, rotation)</div>
+                                <div class="description">静态函数。通过指定坐标系的原点在场景主坐标系中的坐标、x和y轴的单位长度相对场景主坐标系的比率、坐标系相对场景主坐标系的旋转弧度，创建一个平面直角坐标系。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name static"><a class="funcName" href="Coordinate/createPolar.html">createPolar</a>(x, y, unit, rotation)</div>
+                                <div class="description">静态函数。通过指定坐标系的极点在场景主坐标系中的坐标、极轴的单位长度相对场景主坐标系的比率、坐标系相对场景主坐标系的旋转弧度，创建一个平面极坐标系。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Coordinate/pointMapTo.html">pointMapTo</a>(coordinate, x, y)</div>
+                                <div class="description">将指定的点的坐标值从该坐标系映射到指定的坐标系。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Coordinate/vectorMapTo.html">vectorMapTo</a>(coordinate, x, y)</div>
+                                <div class="description">将指定的向量的坐标值从该坐标系映射到指定的坐标系。</div>
                             </div>
 
                         </div>

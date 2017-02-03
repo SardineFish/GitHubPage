@@ -21,10 +21,10 @@
     <div id="main">
         <div id="pos">
             <a class="posLink" href="/doc/SarEngine2D">SarEngine2D</a>
-            <a class="posLink" href="/doc/SarEngine2D/Colliders.html">Colliders</a>
+            <a class="posLink" href="/doc/SarEngine2D/Combination.html">Combination</a>
         </div>
         <div>
-            <p id="name">Colliders</p>
+            <p id="name">Combination</p>
         </div>
         <div id="mainContent">
             <div id="left">
@@ -87,42 +87,96 @@
             </div>
             <div id="center">
                 <div id="description" class="part">
-                    包含各种碰撞模型。
+                    将多个可渲染对象单体组合成一个可渲染单体。由于一个GameObject只能有一个可渲染对象作为其图像，使用Combination可以将多个可渲染对象组合。
                 </div>
                 <div id="syntax" class="part">
                     <p class="title">Syntax</p>
                     <div class="content">
                         <pre class="brush: js;">
-SarEngine.Colliders.Circle;
-SarEngine.Colliders.Rectangle;
-SarEngine.Colliders.Polygon;
-//etc.
+//from global
+var combination = new Combination();
+//from SarEngine
+var combination = new SarEngine.Combination();
 </pre>
                     </div>
                 </div>
                 <div id="member">
-                    <div id="class" class="part">
-                        <p class="title">Classes</p>
+                    <div id="property" class="part">
+                        <p class="title">Properties</p>
                         <div class="content">
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Circle.html">Circle</a>
-                                <div class="description">可渲染，可作为碰撞模型的圆。</div>
+                                <a class="name" href="Combination/center.html">center</a>
+                                <div class="description">Point 该组合体的几何中心坐标。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Ground.html">Ground</a>
-                                <div class="description">地面。</div>
+                                <a class="name" href="Combination/coordinate.html">coordinate</a>
+                                <div class="description">Coordinate 该组合体所在的坐标系。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Polygon.html">Polygon</a>
-                                <div class="description">可渲染，可作为碰撞模型的多边形。</div>
+                                <a class="name" href="Combination/objectList.html">objectList</a>
+                                <div class="description">Array 该组合体内单体的集合。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Rectangle.html">Rectangle</a>
-                                <div class="description">可渲染，可作为碰撞模型的矩形。</div>
+                                <a class="name" href="Combination/position.html">position</a>
+                                <div class="description">Point 该组合体的位置坐标。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Wall.html">Wall</a>
-                                <div class="description">墙。</div>
+                                <a class="name" href="Combination/rotation.html">rotation</a>
+                                <div class="description">Number 该组合体的旋转弧度。</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="method" class="part">
+                        <p class="title">Methods</p>
+                        <div class="content">
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/addObject.html">addObject</a>(renderableObject)</div>
+                                <div class="description">向该组合体内添加对象，该对象可以是任意一个可渲染对象，这意味可以向组合体内添加组合体。渲染时将按照添加的顺序进行渲染，故后添加的将可能覆盖住早前添加的对象。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/changeCoordinate.html">changeCoordinate</a>(coordinate)</div>
+                                <div class="description">改变该组合体所在的坐标系，并将相关数值映射到新的坐标系。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/copy.html">copy</a>()</div>
+                                <div class="description">复制一个相同的组合体实例，新的组合体实例中也包含和该组合体相同的组合成员。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/move.html">move</a>(dx, dy)</div>
+                                <div class="description">将该组合体平移指定的x,y偏移量。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/moveTo.html">moveTo</a>(x, y)</div>
+                                <div class="description">将该组合体移动至指定的位置。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/removeObject.html">removeObject</a>(obj)</div>
+                                <div class="description">从该组合体中将指定的对象移除。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/removeObjectAt.html">removeObjectAt</a>(index)</div>
+                                <div class="description">移除该组合体内指定序号的对象，取值范围0~x，x为该组合体内成员数目-1.</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/render.html">render</a>(graphics, x, y, r, dt, camera, output)</div>
+                                <div class="description">将该组合体渲染到指定的绘图接口，渲染成员时将按objectList从序号低到高的顺序渲染，这意味后添加的将可能覆盖早前添加的对象。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/rotate.html">rotate</a>(rad, x, y)</div>
+                                <div class="description">将该组合体绕定点旋转指定的弧度，若未指定x和y，将默认绕center旋转。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/setCenterPoint.html">setCenterPoint</a>(x, y)</div>
+                                <div class="description">重设该组合体的几何中心坐标，该组合体的实际位置不改变。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/setCoordinate.html">setCoordinate</a>(coordinate)</div>
+                                <div class="description">在保持相关数值不变的前提下，设置该组合体所在的坐标系。</div>
+                            </div>
+                            <div class="item">
+                                <div class="name"><a class="funcName" href="Combination/setPositionPoint.html">setPositionPoint</a>(x, y)</div>
+                                <div class="description">设置该组合体的位置描述坐标，该组合体的实际位置不改变，若要改变该组合体的实际位置，请使用move或moveTo成员函数。</div>
                             </div>
 
                         </div>

@@ -21,10 +21,10 @@
     <div id="main">
         <div id="pos">
             <a class="posLink" href="/doc/SarEngine2D">SarEngine2D</a>
-            <a class="posLink" href="/doc/SarEngine2D/Colliders.html">Colliders</a>
+            <a class="posLink" href="/doc/SarEngine2D/Device.html">Device</a>
         </div>
         <div>
-            <p id="name">Colliders</p>
+            <p id="name">Device</p>
         </div>
         <div id="mainContent">
             <div id="left">
@@ -87,42 +87,31 @@
             </div>
             <div id="center">
                 <div id="description" class="part">
-                    包含各种碰撞模型。
+                    用于获取用户输入设备及其状态。该类的实例由引擎自动构造。
                 </div>
                 <div id="syntax" class="part">
                     <p class="title">Syntax</p>
                     <div class="content">
                         <pre class="brush: js;">
-SarEngine.Colliders.Circle;
-SarEngine.Colliders.Rectangle;
-SarEngine.Colliders.Polygon;
-//etc.
+//该类不提供公共构造函数
 </pre>
                     </div>
                 </div>
                 <div id="member">
-                    <div id="class" class="part">
-                        <p class="title">Classes</p>
+                    <div id="property" class="part">
+                        <p class="title">Properties</p>
                         <div class="content">
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Circle.html">Circle</a>
-                                <div class="description">可渲染，可作为碰撞模型的圆。</div>
+                                <a class="name" href="Device/keyboard.html">keyboard</a>
+                                <div class="description">Keyboard 获取用户键盘。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Ground.html">Ground</a>
-                                <div class="description">地面。</div>
+                                <a class="name" href="Device/mouse.html">mouse</a>
+                                <div class="description">Mouse 获取用户鼠标。</div>
                             </div>
                             <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Polygon.html">Polygon</a>
-                                <div class="description">可渲染，可作为碰撞模型的多边形。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Rectangle.html">Rectangle</a>
-                                <div class="description">可渲染，可作为碰撞模型的矩形。</div>
-                            </div>
-                            <div class="item">
-                                <a class="name" href="/doc/SarEngine2D/Wall.html">Wall</a>
-                                <div class="description">墙。</div>
+                                <a class="name" href="Device/touches.html">touches</a>
+                                <div class="description">Array 用户在触摸屏上触点的集合。</div>
                             </div>
 
                         </div>
