@@ -40,6 +40,8 @@
     <Content Include="doc\SarEngine2D\Output.html" />
     <Content Include="doc\SarEngine2D\part\guide.html" />
     <Content Include="doc\SarEngine2D\part\outline.html" />
+    <Content Include="doc\SarEngine2D\Point.html" />
+    <Content Include="doc\SarEngine2D\Position.html" />
     <Content Include="doc\SarEngine2D\SarEngine.html" />
     <Content Include="doc\SarEngine2D\Scene.html" />
     <Content Include="doc\SarEngine2D\style\doc.css" />
@@ -116,6 +118,7 @@
     <Content Include="lib\syntaxHighlighter\styles\shThemeMDUltra.css" />
     <Content Include="lib\syntaxHighlighter\styles\shThemeMidnight.css" />
     <Content Include="lib\syntaxHighlighter\styles\shThemeRDark.css" />
+    <Content Include="doc\SarEngine2D\Vector2.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="doc\SarEngine2D\" />
