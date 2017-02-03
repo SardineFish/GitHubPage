@@ -16,6 +16,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="doc\SarEngine2D\404.html" />
     <Content Include="doc\SarEngine2D\Align.html" />
     <Content Include="doc\SarEngine2D\Arc.html" />
     <Content Include="doc\SarEngine2D\Audio.html" />
