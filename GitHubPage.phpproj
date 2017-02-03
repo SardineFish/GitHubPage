@@ -40,6 +40,7 @@
     <Content Include="doc\SarEngine2D\Output.html" />
     <Content Include="doc\SarEngine2D\part\guide.html" />
     <Content Include="doc\SarEngine2D\part\outline.html" />
+    <Content Include="doc\SarEngine2D\SarEngine.html" />
     <Content Include="doc\SarEngine2D\Scene.html" />
     <Content Include="doc\SarEngine2D\style\doc.css" />
     <Content Include="doc\SarEngine2D\template\template.html" />
