@@ -2,8 +2,160 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>SarEngine2D</title>
+    <link href="/SarEngine2D/favicon.png" rel="icon" type="image/png">
+    <script src="/lib/SarEngine2D/release/1.0.0/SarEngine2D.js"></script>
+    <script src="/lib/jQuery/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <style>
+        @font-face{
+            font-family: "Roboto";
+            src:url("/fonts/Roboto/Roboto-Regular.ttf");
+        }
+    </style>
 </head>
 <body>
+    <div>
+        <div id="topArea">
+            <div id="topBar">
+                <div class="topBarButton" id="logo">
+                    <img id="logoImg" src="img/logo-50.png">
+                    <a>SarEngine2D</a>
+                </div>
+                <div class="topBarButton" id="code">
+                    <a href="https://github.com/SardineFish/SarEngine2D">Source Code</a>
+                </div>
+                <div class="topBarButton" id="doc">
+                    <a href="/doc/SarEngine2D">Document</a>
+                </div>
+                <div class="topBarButton" id="download">
+                    <a href="">Downloads</a>
+                </div>
+            </div>
+        </div>
+        <div id="mainArea">
+            <div id="welcomeBG">
 
+            </div>
+            <div id="welcomeContent">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var Width = window.innerWidth;
+        var Height = window.innerHeight;
+        var engine = SarEngine.createInNode(welcomeBG, Width, Height);
+        $("#welcomeBG").css("height", Height + "px");
+        var scene = engine.scene;
+        var camera = scene.cameraList[0];
+        var output = camera.outputList[0];
+        var pList = SarEngine.ArrayList();
+        engine.start();
+        function iniParticle()
+        {
+            var p = new Particle();
+            var size = 3 + 7 * Math.random();
+            var c = 10 * Math.random();
+            p.color = new Color(235 + c, 235 + c, 235 + c, 1);
+            var obj = new GameObject();
+            obj.graphic = p;
+            var x = (Width * Math.random()) - (Width / 2);
+            var y = (Height * Math.random()) - (Height / 2);
+            obj.moveTo(x, y);
+            scene.addGameObject(obj);
+            pList.add(obj);
+            obj.animate({ "graphic.size": size }, 1.5);
+            obj.cList = SarEngine.ArrayList();
+            obj.lineList = SarEngine.ArrayList();
+            function move()
+            {
+                if (output.outScreen(obj))
+                {
+                    p.size = 0;
+                    obj.moveTo(x, y);
+                    obj.animate({ "graphic.size": size }, 1.5);
+                }
+                var t = 10 * Math.random();
+                var dst = new Point((Width * Math.random()) - (Width / 2), (Height * Math.random()) - (Height / 2));
+                var v = new Vector2(dst.x / 20, dst.y / 20);
+                v.minus(obj.v);
+                var a = Vector2.multi(v, 1 / t);
+                var f = new Force(a.x * obj.mass, a.y * obj.mass);
+                obj.constantForce = f;
+                setTimeout(move, t * 1000);
+            }
+            function connect()
+            {
+                var t = 2 * Math.random();
+                var index = parseInt(pList.length * Math.random());
+                var target = pList[index];
+                /*for (var i = 0; i < pList.length; i++)
+                {
+                    if (pList[i] == obj)
+                        continue;
+                    if (Point.Distance(obj.position, target.position) < 300)
+                    {
+                        target = pList[i];
+                    }
+                }*/
+                if (obj.cList.length > 3 || target.cList.length > 6)
+                {
+                    setTimeout(connect, t * 1000);
+                    return;
+                }
+                if (obj.cList.contain(target))
+                {
+                    setTimeout(connect, t * 1000);
+                    return;
+                }
+                var line = new Line(obj.graphic.center, target.graphic.center);
+                if (Point.Distance(line.p1, line.p2) > 400)
+                {
+                    setTimeout(connect, t * 1000);
+                    return;
+                }
+                var c = 10 * Math.random();
+                line.strokeStyle = new Color(235 + c, 235 + c, 235 + c, 0);
+                var lineObj = new GameObject();
+                lineObj.graphic = line;
+                scene.addGameObject(lineObj);
+                lineObj.animate({ "graphic.strokeStyle.alpha": 1 }, 1);
+                obj.lineList.add(lineObj);
+                target.lineList.add(lineObj);
+                obj.cList.add(target);
+                target.cList.add(obj);
+                setTimeout(connect, t * 1000);
+            }
+            function disconnect()
+            {
+                var t = 3 + 5 * Math.random();
+                if (obj.cList.length <= 0)
+                {
+                    setTimeout(disconnect, t * 1000);
+                    return;
+                }
+                var index = parseInt(obj.cList.length * Math.random());
+                var target = obj.cList[index];
+                var line = obj.lineList[index];
+                line.stop();
+                line.animate({ "graphic.strokeStyle.alpha": 0 }, 1, function ()
+                {
+                    obj.cList.remove(target);
+                    target.cList.remove(obj);
+                    obj.lineList.remove(line);
+                    target.lineList.remove(line);
+                    scene.removeGameObject(line.id);
+                });
+                setTimeout(disconnect, t * 1000);
+            }
+            connect();
+            move();
+            disconnect();
+        }
+        for (var i = 0; i < 30; i++)
+        {
+            iniParticle();
+        }
+    </script>
 </body>
 </html>
