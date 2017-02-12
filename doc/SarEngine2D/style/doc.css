@@ -109,3 +109,14 @@ margin-bottom: 1em;
     display: block;
     margin-top: 1em;
 }
+
+
+table {
+    border-collapse:collapse;
+}
+table, th, td {
+    border: 1px solid #bbb;
+}
+td {
+    padding: 0.5em;
+}
