@@ -16,6 +16,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
     <Content Include="doc\SarEngine2D\404.html" />
     <Content Include="doc\SarEngine2D\Align.html" />
@@ -119,8 +120,10 @@
     <Content Include="games\FlightFight\lib\SarEngine2D.min.js" />
     <Content Include="index.html" />
     <Content Include="lib\jQuery\jquery.min.js" />
-    <Content Include="lib\SarEngine2D\release\1.0.0\SarEngine2D.js" />
-    <Content Include="lib\SarEngine2D\release\1.0.0\SarEngine2D.min.js" />
+    <Content Include="lib\SarEngine2D\1.0.0\SarEngine2D.js" />
+    <Content Include="lib\SarEngine2D\1.0.0\SarEngine2D.min.js" />
+    <Content Include="lib\SarEngine2D\1.0.1\SarEngine2D.js" />
+    <Content Include="lib\SarEngine2D\1.0.1\SarEngine2D.min.js" />
     <Content Include="lib\syntaxHighlighter\scripts\shAutoloader.js" />
     <Content Include="lib\syntaxHighlighter\scripts\shBrushAppleScript.js" />
     <Content Include="lib\syntaxHighlighter\scripts\shBrushAS3.js" />
@@ -168,10 +171,15 @@
     <Content Include="lib\syntaxHighlighter\styles\shThemeRDark.css" />
     <Content Include="doc\SarEngine2D\Vector2.html" />
     <Content Include="SarEngine2D\favicon.png" />
+    <Content Include="SarEngine2D\img\Browser.png" />
+    <Content Include="SarEngine2D\img\Code.png" />
+    <Content Include="SarEngine2D\img\Device.png" />
+    <Content Include="SarEngine2D\img\favicon.png" />
     <Content Include="SarEngine2D\img\logo-128.png" />
     <Content Include="SarEngine2D\img\logo-200.png" />
     <Content Include="SarEngine2D\img\logo-256.png" />
     <Content Include="SarEngine2D\img\logo-50.png" />
+    <Content Include="SarEngine2D\physics.html" />
     <Content Include="SarEngine2D\style.css" />
     <Content Include="SarEngine2D\index.html" />
   </ItemGroup>
@@ -196,8 +204,8 @@
     <Folder Include="lib\" />
     <Folder Include="lib\jQuery\" />
     <Folder Include="lib\SarEngine2D\" />
-    <Folder Include="lib\SarEngine2D\release\" />
-    <Folder Include="lib\SarEngine2D\release\1.0.0\" />
+    <Folder Include="lib\SarEngine2D\1.0.0\" />
+    <Folder Include="lib\SarEngine2D\1.0.1\" />
     <Folder Include="lib\syntaxHighlighter\" />
     <Folder Include="lib\syntaxHighlighter\scripts\" />
     <Folder Include="lib\syntaxHighlighter\styles\" />
