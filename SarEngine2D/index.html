@@ -69,12 +69,12 @@
             obj.lineList = SarEngine.ArrayList();
             function move()
             {
-                if (output.outScreen(obj))
+                /*if (output.outScreen(obj))
                 {
                     p.size = 0;
                     obj.moveTo(x, y);
                     obj.animate({ "graphic.size": size }, 1.5);
-                }
+                }*/
                 var t = 10 * Math.random();
                 var dst = new Point((Width * Math.random()) - (Width / 2), (Height * Math.random()) - (Height / 2));
                 var v = new Vector2(dst.x / 20, dst.y / 20);
@@ -138,12 +138,19 @@
                 var target = obj.cList[index];
                 var line = obj.lineList[index];
                 line.stop();
+                obj.cList.remove(target);
+                target.cList.remove(obj);
+                obj.lineList.remove(line);
+                target.lineList.remove(line);
+                //console.log("Begin remove " + line.id);
+                setTimeout(function ()
+                {
+                    if (line.id > 0)
+                        throw new Error("WTF@!");
+                }, 2000);
                 line.animate({ "graphic.strokeStyle.alpha": 0 }, 1, function ()
                 {
-                    obj.cList.remove(target);
-                    target.cList.remove(obj);
-                    obj.lineList.remove(line);
-                    target.lineList.remove(line);
+                    //console.log("End remove " + line.id);
                     scene.removeGameObject(line.id);
                 });
                 setTimeout(disconnect, t * 1000);
