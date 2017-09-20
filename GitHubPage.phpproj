@@ -118,11 +118,11 @@
     <Content Include="games\FlightFight\lib\SardineFish.Web.js" />
     <Content Include="games\FlightFight\lib\SardineFish.Web.UI.js" />
     <Content Include="games\FlightFight\lib\SarEngine2D.min.js" />
-    <Content Include="games\SlolarSystem\jquery.min.js" />
-    <Content Include="games\SlolarSystem\SarEngine2D.GUI.js" />
-    <Content Include="games\SlolarSystem\SarEngine2D.js" />
-    <Content Include="games\SlolarSystem\SarEngine2D.Objects.js" />
-    <Content Include="games\SlolarSystem\solarSystem.html" />
+    <Content Include="games\SolarSystem\jquery.min.js" />
+    <Content Include="games\SolarSystem\SarEngine2D.GUI.js" />
+    <Content Include="games\SolarSystem\SarEngine2D.js" />
+    <Content Include="games\SolarSystem\SarEngine2D.Objects.js" />
+    <Content Include="games\SolarSystem\solarSystem.html" />
     <Content Include="index.html" />
     <Content Include="lib\jQuery\jquery.min.js" />
     <Content Include="lib\SarEngine2D\1.0.0\SarEngine2D.js" />
@@ -206,7 +206,7 @@
     <Folder Include="games\FlightFight\img\" />
     <Folder Include="games\FlightFight\lib\" />
     <Folder Include="doc\" />
-    <Folder Include="games\SlolarSystem\" />
+    <Folder Include="games\SolarSystem\" />
     <Folder Include="lib\" />
     <Folder Include="lib\jQuery\" />
     <Folder Include="lib\SarEngine2D\" />
