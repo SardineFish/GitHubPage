@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Solar System!</title>
+    <script src="SarEngine2D.js"></script>
+    <script src="SarEngine2D.Objects.js"></script>
+    <script src="SarEngine2D.GUI.js"></script>
+    <script src="jquery.min.js"></script>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #solar-system{
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="solar-system">
+
+    </div>
+    <script>
+        var width = $("#solar-system").width();
+        var height = $("#solar-system").height();
+        var engine = SarEngine.createInNode($("#solar-system").get(0), width, height);
+        var scene = engine.scene;
+        var camera = scene.cameraList[0];
+        var display = camera.displayList[0];
+        engine.start();
+
+        var sun = new Circle(50);
+        sun.strokeStyle = Color.fromString("transparent");
+        sun.fillStyle = "#fff06b";
+        var obj = new GameObject();
+        obj.graphic = sun;
+        sun = obj;
+        scene.addGameObject(sun);
+
+        var mercury = new Circle(3);
+        mercury.strokeStyle = Color.fromString("transparent");
+        mercury.fillStyle = "#a0a0a0";
+        var obj = new GameObject();
+        obj.graphic = mercury;
+        mercury = obj;
+        mercury.moveTo(90, 0);
+        mercury.setCenter(0, 0);
+        mercury.angV = 4.15;
+        scene.addGameObject(mercury);
+
+        var venus = new Circle(9.4);
+        venus.strokeStyle = Color.fromString("transparent");
+        venus.fillStyle = "#eae5cf";
+        var obj = new GameObject();
+        obj.graphic = venus;
+        venus = obj;
+        venus.moveTo(120, 0);
+        venus.setCenter(0, 0);
+        venus.angV = 1.625;
+        scene.addGameObject(venus);
+
+        var earth = new Circle(10);
+        earth.strokeStyle = Color.fromString("transparent");
+        earth.fillStyle = "#6db5ff";
+        var obj = new GameObject();
+        obj.graphic = earth;
+        earth = obj;
+        earth.moveTo(150, 0);
+        earth.setCenter(0, 0);
+        earth.angV = 1;
+        scene.addGameObject(earth);
+
+        var mars = new Circle(5.3);
+        mars.strokeStyle = Color.fromString("transparent");
+        mars.fillStyle = "#ffbe6d";
+        var obj = new GameObject();
+        obj.graphic = mars;
+        mars = obj;
+        mars.moveTo(210, 0);
+        mars.setCenter(0, 0);
+        mars.angV = 0.468;
+        scene.addGameObject(mars);
+
+        var jupiter = new Circle(100);
+        jupiter.strokeStyle = Color.fromString("transparent");
+        jupiter.fillStyle = "#ffe3bf";
+        var obj = new GameObject();
+        obj.graphic = jupiter;
+        jupiter = obj;
+        jupiter.moveTo(570, 0);
+        jupiter.setCenter(0, 0);
+        jupiter.angV = 0.084;
+        scene.addGameObject(jupiter);
+
+        var saturnian = new Circle(94);
+        saturnian.strokeStyle = Color.fromString("transparent");
+        saturnian.fillStyle = "#fdeeb7";
+        var obj = new GameObject();
+        obj.graphic = saturnian;
+        saturnian = obj;
+        saturnian.moveTo(1000, 0);
+        saturnian.setCenter(0, 0);
+        saturnian.angV = 0.033;
+        scene.addGameObject(saturnian);
+
+        var uranian = new Circle(40);
+        uranian.strokeStyle = Color.fromString("transparent");
+        uranian.fillStyle = "#c5fcff";
+        var obj = new GameObject();
+        obj.graphic = uranian;
+        uranian = obj;
+        uranian.moveTo(1970, 0);
+        uranian.setCenter(0, 0);
+        uranian.angV = 0.011;
+        scene.addGameObject(uranian);
+
+        var neptunian = new Circle(38);
+        neptunian.strokeStyle = Color.fromString("transparent");
+        neptunian.fillStyle = "#c5fcff";
+        var obj = new GameObject();
+        obj.graphic = neptunian;
+        neptunian = obj;
+        neptunian.moveTo(3060, 0);
+        neptunian.setCenter(0, 0);
+        neptunian.angV = 0.006;
+        scene.addGameObject(neptunian);
+
+    </script>
+</body>
+</html>
