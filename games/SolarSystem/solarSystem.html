@@ -29,7 +29,8 @@
         var scene = engine.scene;
         var camera = scene.cameraList[0];
         var display = camera.displayList[0];
-        engine.start();
+        engine.start()
+		camera.zoomTo(0.4);
 
         var sun = new Circle(50);
         sun.strokeStyle = Color.fromString("transparent");
