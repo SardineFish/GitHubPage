@@ -1,7 +1,6 @@
 ﻿(function (Engine)
 {
-    if (!Engine)
-    {
+    if (!Engine) {
         throw new Error("Engine not found.");
     }
 
@@ -16,36 +15,29 @@
         }
         list.insert = function (obj, index)
         {
-            if (isNaN(index) || index < 0)
-            {
+            if (isNaN(index) || index < 0) {
                 throw new Error("Invalid index.");
             }
-            for (var i = this.length - 1; i >= index; i--)
-            {
+            for (var i = this.length - 1; i >= index; i--) {
                 this[i + 1] = this[i];
             }
             this[index] = obj;
         }
         list.removeAt = function (index)
         {
-            if (isNaN(index) || index < 0 || index >= list.length)
-            {
+            if (isNaN(index) || index < 0 || index >= list.length) {
                 throw new Error("Invalid index.");
             }
-            for (var i = index; i < list.length - 1; i++)
-            {
+            for (var i = index; i < list.length - 1; i++) {
                 list[i] = list[i + 1];
             }
             list.length -= 1;
         }
         list.remove = function (obj)
         {
-            for (var i = 0; i < list.length; i++)
-            {
-                if (list[i] == obj)
-                {
-                    for (; i < list.length - 1; i++)
-                    {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] == obj) {
+                    for (; i < list.length - 1; i++) {
                         list[i] = list[i + 1];
                     }
                     list.length -= 1;
@@ -60,8 +52,7 @@
                 startIndex = 0;
             if (!count || isNaN(count))
                 count = arr.length;
-            for (var i = startIndex; i < count; i++)
-            {
+            for (var i = startIndex; i < count; i++) {
                 list[list.length] = arr[i];
             }
         }
@@ -137,8 +128,7 @@
     }
     Vector2.prototype.multi = function (n)
     {
-        if (!isNaN(n))
-        {
+        if (!isNaN(n)) {
             this.x *= n;
             this.y *= n;
             return this;
@@ -150,32 +140,27 @@
     }
     Vector2.plus = function (u, v)
     {
-        if (!(u instanceof Vector2) || !(u instanceof Vector2))
-        {
+        if (!(u instanceof Vector2) || !(u instanceof Vector2)) {
             throw new Error("u and v must be an Vector2.");
         }
         return new Vector2(u.x + v.x, u.y + v.y);
     }
     Vector2.minus = function (u, v)
     {
-        if (!(u instanceof Vector2) || !(u instanceof Vector2))
-        {
+        if (!(u instanceof Vector2) || !(u instanceof Vector2)) {
             throw new Error("u and v must be an Vector2.");
         }
         return new Vector2(u.x - v.x, u.y - v.y);
     }
     Vector2.multi = function (u, v)
     {
-        if (!(u instanceof Vector2))
-        {
+        if (!(u instanceof Vector2)) {
             throw new Error("u must be an Vector2.");
         }
-        if (v instanceof Vector2)
-        {
+        if (v instanceof Vector2) {
             return (u.x * v.x + u.y * v.y);
         }
-        else if (!isNaN(v))
-        {
+        else if (!isNaN(v)) {
             return (new Vector2(u.x * v, u.y * v));
         }
     }
@@ -231,8 +216,7 @@
     {
         if (!(this.lines instanceof Array))
             throw "this object has something wrong.";
-        for (var i = 0; i < this.lines.length; i++)
-        {
+        for (var i = 0; i < this.lines.length; i++) {
             if (this.lines[i] == l)
                 return true;
         }
@@ -259,7 +243,7 @@
         this.coordinate = Coordinate.Default;
         this.innerX = x;
         this.innerY = y;
-        var position=this;
+        var position = this;
         Object.defineProperty(this, "x", {
             get: function ()
             {
@@ -267,15 +251,13 @@
             },
             set: function (value)
             {
-                if (position.onChange)
-                {
+                if (position.onChange) {
                     args = { changed: "y", x: value, y: position.innerY, cancle: false };
                     position.onChange(args);
                     if (args.cancle)
                         return;
                 }
-                if (position.changeCallback)
-                {
+                if (position.changeCallback) {
                     args = { changed: "y", x: value, y: position.innerY, cancle: false };
                     position.changeCallback(args);
                     if (args.cancle)
@@ -291,15 +273,13 @@
             },
             set: function (value)
             {
-                if (position.onChange)
-                {
+                if (position.onChange) {
                     args = { changed: "y", x: position.innerX, y: value, cancle: false };
                     position.onChange(args);
                     if (args.cancle)
                         return;
                 }
-                if (position.changeCallback)
-                {
+                if (position.changeCallback) {
                     args = { changed: "y", x: position.innerX, y: value, cancle: false };
                     position.changeCallback(args);
                     if (args.cancle)
@@ -341,8 +321,7 @@
     function Line(_p1, _p2)
     {
         var p1 = _p1, p2 = _p2;
-        if ((_p1 instanceof Vector2) && (_p2 instanceof Vector2))
-        {
+        if ((_p1 instanceof Vector2) && (_p2 instanceof Vector2)) {
             p1 = new Point(_p1.x, _p1.y, this);
             p2 = new Point(_p2.x, _p2.y, this);
         }
@@ -417,8 +396,7 @@
     }
     Line.prototype.rotate = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
@@ -427,8 +405,7 @@
     }
     Line.prototype.isCross = function (obj)
     {
-        if (obj instanceof Line)
-        {
+        if (obj instanceof Line) {
             var p1 = this.p1;
             var p2 = this.p2;
             var p3 = obj.p1;
@@ -443,8 +420,7 @@
                 return true;
             return false;
         }
-        else if (obj instanceof Circle)
-        {
+        else if (obj instanceof Circle) {
             var v1 = new Vector2(obj.o.x - this.p1.x, obj.o.y - this.p1.y);
             var v2 = new Vector2(this.p2.x - this.p1.x, this.p2.y - this.p1.y);
             var v3 = new Vector2(obj.o.x - this.p2.x, obj.o.y - this.p2.y);
@@ -457,12 +433,10 @@
                 return true;
             if (d1 && d2)
                 return false;
-            if ((v1.x * v2.x + v1.y * v2.y < 0) || (v3.x * v4.x + v3.y * v4.y < 0))
-            {
+            if ((v1.x * v2.x + v1.y * v2.y < 0) || (v3.x * v4.x + v3.y * v4.y < 0)) {
                 return false;
             }
-            if (v3.x * v4.x + v3.y * v4.y < 0)
-            {
+            if (v3.x * v4.x + v3.y * v4.y < 0) {
 
             }
             var x = v1.x * v2.y - v2.x * v1.y;
@@ -474,26 +448,21 @@
                 return true;
             return false;
         }
-        else if (obj instanceof Rectangle)
-        {
-            for (var i = 0; i < obj.E.length; i++)
-            {
+        else if (obj instanceof Rectangle) {
+            for (var i = 0; i < obj.E.length; i++) {
                 if (this.isCross(obj.E[i]))
                     return true;
             }
             return false;
         }
-        else if (obj instanceof Polygon)
-        {
-            for (var i = 0; i < obj.E.length; i++)
-            {
+        else if (obj instanceof Polygon) {
+            for (var i = 0; i < obj.E.length; i++) {
                 if (this.isCross(obj.E[i]))
                     return true;
             }
             return false;
         }
-        else if (obj instanceof Particle)
-        {
+        else if (obj instanceof Particle) {
             return obj.isCollideWith(this, 0, 0);
         }
     }
@@ -777,8 +746,7 @@
         image.o.y = height / 2;
         img.onload = function ()
         {
-            if (isNaN(width) || isNaN(height))
-            {
+            if (isNaN(width) || isNaN(height)) {
                 width = img.width;
                 height = img.height;
             }
@@ -786,7 +754,7 @@
             image.height = height;
             image.o.x = -img.width / 2;
             image.o.y = img.height / 2;
-            
+
             img.onload = null;
         }
         img.src = url;
@@ -848,8 +816,7 @@
     }
     Image.prototype.rotate = function (angle, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
@@ -859,8 +826,7 @@
     }
     Image.prototype.rotateTo = function (angle, x, y)
     {
-        if (!isNaN(x) && !isNaN(y))
-        {
+        if (!isNaN(x) && !isNaN(y)) {
             this.position.rotate(angle - this.rotation, x, y);
             this.center.rotate(angle - this.rotation, x, y);
         }
@@ -875,16 +841,14 @@
         var o = this.center.coordinate.pFrom(this.center.x, this.center.y);
         o.x += this.o.x;
         o.y += this.o.y;
-        if (this.rotation)
-        {
+        if (this.rotation) {
             //I cannot understand now.
             graphics.rotate(this.rotation, this.center.x, this.center.y);
             //graphics.drawImage(this.img, this.center.x, this.center.y, this.width, this.height);
             graphics.drawImage(this.img, o.x, o.y, this.width, this.height);
             graphics.rotate(-this.rotation, this.center.x, this.center.y);
         }
-        else
-        {
+        else {
             graphics.drawImage(this.img, o.x, o.y, this.width, this.height);
         }
     }
@@ -902,16 +866,14 @@
             }
             list.remove = function (index)
             {
-                for (var i = index + 1; i < list.length; i++)
-                {
+                for (var i = index + 1; i < list.length; i++) {
                     list[i - 1] = list[i];
                 }
                 list.pop();
             }
             list.clear = function ()
             {
-                while (list.length)
-                {
+                while (list.length) {
                     list.pop();
                 }
             }
@@ -974,16 +936,14 @@
     {
         var path = new Path();
         path.coordinate = this.coordinate;
-        for (var i = 0; i < this.pList.length; i++)
-        {
+        for (var i = 0; i < this.pList.length; i++) {
             path.pList[i] = this.pList[i].copy();
         }
         return path;
     }
     Path.prototype.setCoordinate = function (coordinate)
     {
-        for (var i = 0; i < this.pList; i++)
-        {
+        for (var i = 0; i < this.pList; i++) {
             this.pList[i].setCoordinate(coordinate);
         }
         this.position.setCoordinate(coordinate);
@@ -992,8 +952,7 @@
     }
     Path.prototype.changeCoordinate = function (coordinate)
     {
-        for (var i = 0; i < this.pList; i++)
-        {
+        for (var i = 0; i < this.pList; i++) {
             this.pList[i].changeCoordinate(coordinate);
         }
         this.position.changeCoordinate(coordinate);
@@ -1002,8 +961,7 @@
     }
     Path.prototype.setCenter = function (x, y)
     {
-        if (!isNaN(x) && !isNaN(y))
-        {
+        if (!isNaN(x) && !isNaN(y)) {
             this.position.x = x;
             this.position.y = y;
             this.center = this.position;
@@ -1013,8 +971,7 @@
     {
         var dx = x - this.position.x;
         var dy = y - this.position.y;
-        for (var i = 0; i < this.pList.length; i++)
-        {
+        for (var i = 0; i < this.pList.length; i++) {
             this.pList[i].moveTo(this.pList[i].x + dx, this.pList[i].y + dy);
         }
         this.position.x = x;
@@ -1028,13 +985,12 @@
     Path.prototype.render = function (graphics, x, y, r, dt)
     {
         graphics.beginPath();
-        for (var i = 0; i < this.pList.length - 1; i++)
-        {
+        for (var i = 0; i < this.pList.length - 1; i++) {
             var p1 = this.pList[i].coordinate.pFrom(this.pList[i].x, this.pList[i].y);
             p1.cp2 = this.pList[i].cp2.coordinate.pFrom(this.pList[i].cp2.x, this.pList[i].cp2.y);
             var p2 = this.pList[i + 1].coordinate.pFrom(this.pList[i + 1].x, this.pList[i + 1].y);
             p2.cp1 = this.pList[i + 1].cp1.coordinate.pFrom(this.pList[i + 1].cp1.x, this.pList[i + 1].cp1.y);
-            
+
             graphics.lineTo(p1.x, p1.y);
             graphics.bezierCurveTo(p1.cp2.x, p1.cp2.y, p2.cp1.x, p2.cp1.y, p2.x, p2.y);
         }
@@ -1061,8 +1017,7 @@
     Combination.prototype.copy = function ()
     {
         var comb = new Combination();
-        for (var i = 0; i < this.objectList.length; i++)
-        {
+        for (var i = 0; i < this.objectList.length; i++) {
             comb.objectList[i] = this.objectList[i].copy();
         }
         comb.position = this.position.copy();
@@ -1084,8 +1039,7 @@
     }
     Combination.prototype.setCoordinate = function (coordinate)
     {
-        for (var i = 0; i < this.objectList.length ; i++)
-        {
+        for (var i = 0; i < this.objectList.length ; i++) {
             if (this.objectList[i].setCoordinate)
                 this.objectList[i].setCoordinate(coordinate);
         }
@@ -1095,8 +1049,7 @@
     }
     Combination.prototype.changeCoordinate = function (coordinate)
     {
-        for (var i = 0; i < this.objectList.length ; i++)
-        {
+        for (var i = 0; i < this.objectList.length ; i++) {
             if (this.objectList[i].changeCoordinate)
                 this.objectList[i].changeCoordinate(coordinate);
         }
@@ -1116,8 +1069,7 @@
     {
         var dx = x - this.position.x;
         var dy = y - this.position.y;
-        for (var i = 0; i < this.objectList.length ; i++)
-        {
+        for (var i = 0; i < this.objectList.length ; i++) {
             this.objectList[i].moveTo(this.objectList[i].position.x + dx, this.objectList[i].position.y + dy);
         }
         this.position.x += dx;
@@ -1127,8 +1079,7 @@
     }
     Combination.prototype.move = function (dx, dy)
     {
-        for (var i = 0; i < this.objectList.length ; i++)
-        {
+        for (var i = 0; i < this.objectList.length ; i++) {
             this.objectList[i].moveTo(this.objectList[i].position.x + dx, this.objectList[i].position.y + dy);
         }
         this.position.x += dx;
@@ -1136,15 +1087,13 @@
         this.center.x += dx;
         this.center.y += dy;
     }
-    Combination.prototype.rotate = function (ang, x,y)
+    Combination.prototype.rotate = function (ang, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
-        for (var i = 0; i < this.objectList.length ; i++)
-        {
+        for (var i = 0; i < this.objectList.length ; i++) {
             if (this.objectList[i].rotate)
                 this.objectList[i].rotate(ang, x, y);
         }
@@ -1154,8 +1103,7 @@
     }
     Combination.prototype.render = function (graphics, x, y, r, dt)
     {
-        for (var i = 0; i < this.objectList.length; i++)
-        {
+        for (var i = 0; i < this.objectList.length; i++) {
             this.objectList[i].render(graphics, this.objectList[i].position.x, this.objectList[i].position.y, this.objectList[i].rotation, dt);
         }
     }
@@ -1319,8 +1267,7 @@
     {
         var t = this.playing;
         this.playing = false;
-        if (this.onEnd && t)
-        {
+        if (this.onEnd && t) {
             this.onEnd();
         }
     }
@@ -1346,18 +1293,14 @@
         var f = Math.floor(this.time / (1 / this.fps));
         if (this.reverse)
             f = this.fCount - f;
-        if (this.loop.enable)
-        {
-            if (f > this.loop.to)
-            {
+        if (this.loop.enable) {
+            if (f > this.loop.to) {
                 this.loop.lt++;
-                if (this.loop.loopTimes > 0 && this.loop.lt >= this.loop.loopTimes)
-                {
+                if (this.loop.loopTimes > 0 && this.loop.lt >= this.loop.loopTimes) {
                     this.loop.enable = false;
                     f = f % this.fCount;
                 }
-                else
-                {
+                else {
                     f -= this.loop.from;
                     f %= (this.loop.to - this.loop.from);
                     if (!f)
@@ -1366,22 +1309,18 @@
                 }
             }
         }
-        else if (this.playing)
-        {
-            if (f >= this.fCount && !this.reverse)
-            {
+        else if (this.playing) {
+            if (f >= this.fCount && !this.reverse) {
                 this.frame = f = this.fCount - 1;
                 this.end();
             }
-            if (f <= 0 && this.reverse)
-            {
+            if (f <= 0 && this.reverse) {
                 this.frame = f = 0;
                 this.end();
             }
             //f = f % this.fCount;
         }
-        if (this.playing)
-        {
+        if (this.playing) {
             var F = f;
             if (this.frame != f && this.onFrameUpdate)
                 F = this.onFrameUpdate(f);
@@ -1445,12 +1384,10 @@
     {
         var obj = new GameObject();
         obj.name = this.name;
-        if (this.graphic)
-        {
+        if (this.graphic) {
             obj.graphic = this.graphic.copy ? this.graphic.copy() : this.graphic;
         }
-        if (this.collider)
-        {
+        if (this.collider) {
             obj.collider = this.collider.copy ? this.collider.copy() : this.collider;
         }
         obj.mass = this.mass;
@@ -1498,13 +1435,11 @@
     GameObject.prototype.animate = function (properties, time, callback)
     {
         var gameObject = this;
-        for (var key in properties)
-        {
+        for (var key in properties) {
             var keys = key.split(".");
             var lastKey = keys[keys.length - 1];
             var obj = this;
-            for (var i = 0; i < keys.length - 1; i++)
-            {
+            for (var i = 0; i < keys.length - 1; i++) {
                 obj = obj[keys[i]];
             }
             (function (obj, key, from, to, time, callback)
@@ -1515,30 +1450,24 @@
                 {
                     t += dt;
                     obj[key] += delta * dt;
-                    if (delta < 0 && obj[key] <= to)
-                    {
+                    if (delta < 0 && obj[key] <= to) {
                         obj[key] = to;
                         gameObject.animationCallbackList.remove(animeCallback);
-                        if (callback)
-                        {
+                        if (callback) {
                             callback();
                         }
                     }
-                    else if (delta > 0 && obj[key] >= to)
-                    {
+                    else if (delta > 0 && obj[key] >= to) {
                         obj[key] = to;
                         gameObject.animationCallbackList.remove(animeCallback);
-                        if (callback)
-                        {
+                        if (callback) {
                             callback();
                         }
                     }
-                    else if (t >= time)
-                    {
+                    else if (t >= time) {
                         obj[key] = to;
                         gameObject.animationCallbackList.remove(animeCallback);
-                        if (callback)
-                        {
+                        if (callback) {
                             callback();
                         }
                     }
@@ -1555,10 +1484,8 @@
     {
         function DFS(obj, target)
         {
-            for (var i = 0; i < obj.links.length; i++)
-            {
-                if (obj.links[i] == target)
-                {
+            for (var i = 0; i < obj.links.length; i++) {
+                if (obj.links[i] == target) {
                     return true;
                 }
                 return DFS(obj.links[i], target);
@@ -1571,7 +1498,7 @@
     }
     GameObject.prototype.unLink = function (gameObject)
     {
-        var index=gameObject.links.indexOf(this);
+        var index = gameObject.links.indexOf(this);
         if (index < 0)
             return false;
         gameObject.links.removeAt(index);
@@ -1588,10 +1515,8 @@
     }
     GameObject.prototype.force = function (a, b, c)
     {
-        if (a instanceof Force)
-        {
-            if (b)
-            {
+        if (a instanceof Force) {
+            if (b) {
                 this.constantForce.x += a.x;
                 this.constantForce.y += a.y;
                 return this.constantForce;
@@ -1600,14 +1525,11 @@
             this.F.y += a.y;
             return this.F;
         }
-        else if (isNaN(a) || isNaN(b))
-        {
+        else if (isNaN(a) || isNaN(b)) {
             throw new Error("Paramate must be a Number.");
         }
-        else
-        {
-            if (c)
-            {
+        else {
+            if (c) {
                 this.constantForce.x += a;
                 this.constantForce.y += b;
                 return this.constantForce;
@@ -1645,17 +1567,14 @@
         {
             var dx = e.x - gameObject.position.x;
             var dy = e.y - gameObject.position.y;
-            if (gameObject.graphic)
-            {
+            if (gameObject.graphic) {
                 gameObject.graphic.moveTo(gameObject.graphic.position.x + dx, gameObject.graphic.position.y + dy);
             }
-            if (gameObject.collider && gameObject.collider != gameObject.graphic)
-            {
+            if (gameObject.collider && gameObject.collider != gameObject.graphic) {
                 gameObject.collider.moveTo(gameObject.collider.position.x + dx, gameObject.collider.position.y + dy);
             }
 
-            for (var i = 0; i < gameObject.links.length; i++)
-            {
+            for (var i = 0; i < gameObject.links.length; i++) {
                 gameObject.links[i].position.x += dx;
                 gameObject.links[i].position.y += dy;
             }
@@ -1670,21 +1589,17 @@
     }
     GameObject.prototype.rotate = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
-        if (this.graphic && this.graphic.rotate)
-        {
+        if (this.graphic && this.graphic.rotate) {
             this.graphic.rotate(rad, x, y);
         }
-        if (this.collider && this.collider != this.graphic && this.collider.rotate)
-        {
+        if (this.collider && this.collider != this.graphic && this.collider.rotate) {
             this.collider.rotate(rad, x, y);
         }
-        for (var i = 0; i < this.links.length; i++)
-        {
+        for (var i = 0; i < this.links.length; i++) {
             if (this.links[i].rotate)
                 this.links[i].rotate(rad, x, y);
         }
@@ -1703,8 +1618,7 @@
             if (time >= t)
                 time = t;
             gameObject.moveTo((x - startPosition.x) / t * time + startPosition.x, (y - startPosition.y) / t * time + startPosition.y);
-            if (time == t)
-            {
+            if (time == t) {
                 gameObject._animCallback = null;
                 if (callback)
                     callback();
@@ -1788,12 +1702,10 @@
     }
     Particle.prototype.rotate = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             this.position.rotate(rad, this.center.x, this.center.y);
         }
-        else
-        {
+        else {
             this.position.rotate(rad, x, y);
             this.center.rotate(rad, x, y);
         }
@@ -1801,12 +1713,10 @@
     }
     Particle.prototype.rotateTo = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             this.position.rotate(rad - this.rotation, this.center.x, this.center.y);
         }
-        else
-        {
+        else {
             this.position.rotate(rad - this.rotation, x, y);
             this.center.rotate(rad - this.rotation, x, y);
         }
@@ -1830,8 +1740,7 @@
 
         var l = new Line(o, new Point(v1.x * dt + o.x, v1.y * dt + o.y));
 
-        if (target instanceof Particle)
-        {
+        if (target instanceof Particle) {
             var o2 = this.o.coordinate.pFrom(target.o.x, target.o.y);
             o2.x += target.center.x;
             o2.y += target.center.y;
@@ -1884,7 +1793,7 @@
         circle.dff = this.dff;
         circle.static = this.static;
         circle.soft = this.soft;
-        circle.strokeWidth=this.strokeWidth;
+        circle.strokeWidth = this.strokeWidth;
         if (this.strokeStyle instanceof Color)
             circle.strokeStyle = this.strokeStyle.copy();
         else
@@ -1923,8 +1832,7 @@
     }
     Circle.prototype.rotate = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
@@ -1965,27 +1873,22 @@
     }
     Circle.prototype.isCross = function (obj)
     {
-        if (obj instanceof Line)
-        {
+        if (obj instanceof Line) {
             return obj.isCross(this);
         }
-        else if (obj instanceof Circle)
-        {
+        else if (obj instanceof Circle) {
             return this.isCollideWith(obj);
         }
     }
     Circle.prototype.isCollideWith = function (col, v1, v2, dt)
     {
-        if (col instanceof Polygon)
-        {
+        if (col instanceof Polygon) {
             return col.isCollideWith(this);
         }
-        else if (col instanceof Point)
-        {
+        else if (col instanceof Point) {
             return ((col.x - this.o.x) * (col.x - this.o.x) + (col.y - this.o.y) * (col.y - this.o.y) <= this.r * this.r)
         }
-        else if (col instanceof Circle)
-        {
+        else if (col instanceof Circle) {
             var dx = this.o.x - col.o.x;
             var dy = this.o.y - col.o.y;
             var d = dx * dx + dy * dy;
@@ -1993,30 +1896,25 @@
                 return true;
             return false;
         }
-        else if (col instanceof Rectangle)
-        {
+        else if (col instanceof Rectangle) {
             var o = new Point(col.o.x + col.center.x, col.o.y + col.center.y);
 
-            if (o.x <= this.o.x && this.o.x <= o.x + col.width)
-            {
+            if (o.x <= this.o.x && this.o.x <= o.x + col.width) {
                 if (o.y - this.r <= this.o.y && this.o.y <= o.y + col.height + this.r)
                     return true;
             }
-            if (o.y <= this.o.y && this.o.y <= o.y + col.height)
-            {
+            if (o.y <= this.o.y && this.o.y <= o.y + col.height) {
                 if (o.x - this.r <= this.o.x && this.o.x <= o.x + col.width + this.r)
                     return true;
             }
-            for (var i = 0; i < 4; i++)
-            {
+            for (var i = 0; i < 4; i++) {
                 var p = col.V[i];
                 if (((p.x - this.o.x) * (p.x - this.o.x) + (p.y - this.o.y) * (p.y - this.o.y)) <= this.r * this.r)
                     return true;
             }
             return false;
         }
-        else if (col instanceof Particle)
-        {
+        else if (col instanceof Particle) {
             return col.isCollideWith(this, v2, v1, dt);
         }
     }
@@ -2026,20 +1924,17 @@
             return;
         if (self.collider.static && target.collider.static)
             return;
-        if (target.collider instanceof Circle)
-        {
+        if (target.collider instanceof Circle) {
             var args = new GameObject.CollideEventArgs();
             args.dff = Math.min(self.collider.dff, target.collider.dff);
             args.e = Math.min(self.collider.e, target.collider.e);
-            if (self.onCollide)
-            {
+            if (self.onCollide) {
                 args.target = target;
                 self.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            if (target.onCollide)
-            {
+            if (target.onCollide) {
                 args.target = self;
                 target.onCollide(args);
                 if (args.ignore)
@@ -2062,8 +1957,7 @@
             var Ln = n.x * n.x + n.y * n.y;
             var vt = Vector2.multi(n, (v2.x * n.x + v2.y * n.y) / Ln);
             var Lvn = v2.x * o21.x + v2.y * o21.y;
-            if (Lvn <= 0)
-            {
+            if (Lvn <= 0) {
                 return;
 
             }
@@ -2072,14 +1966,12 @@
             v1_ = Vector2.multi(vn, (m2 + e * m2) / (m1 + m2));
             v2_ = Vector2.multi(vn, (m2 - e * m1) / (m1 + m2));
 
-            if (self.collider.static)
-            {
+            if (self.collider.static) {
                 var dv = Vector2.minus(v1_, v1);
                 v1_.minus(dv);
                 v2_.minus(dv);
             }
-            else if (target.collider.static)
-            {
+            else if (target.collider.static) {
                 var dv = Vector2.minus(v2_, vn);
                 v1_.minus(dv);
                 v2_.minus(dv);
@@ -2091,8 +1983,7 @@
             self.v = v1_;
             target.v = v2_;
 
-            if (!circle.soft || !rect.soft)
-            {
+            if (!circle.soft || !rect.soft) {
                 d = Math.abs(o21.mod() - (self.collider.r + target.collider.r));
                 var dv = Math.abs(vn.mod());
                 var t = d / dv;
@@ -2104,20 +1995,17 @@
                 target.v.plus(Vector2.multi(target.a, t));
             }
         }
-        else if (target.collider instanceof Rectangle)
-        {
+        else if (target.collider instanceof Rectangle) {
             var args = new GameObject.CollideEventArgs();
             args.dff = Math.min(self.collider.dff, target.collider.dff);
             args.e = Math.min(self.collider.e, target.collider.e);
-            if (self.onCollide)
-            {
+            if (self.onCollide) {
                 args.target = target;
                 self.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            if (target.onCollide)
-            {
+            if (target.onCollide) {
                 args.target = self;
                 target.onCollide(args);
                 if (args.ignore)
@@ -2136,8 +2024,7 @@
 
             var minL = null;
             var minLD = -1;
-            for (var i = 0; i < 4; i++)
-            {
+            for (var i = 0; i < 4; i++) {
                 var l = rect.E[i];
                 if (v2.x * l.norV.x + v2.y * l.norV.y > 0) //Away from edge
                     continue;
@@ -2148,8 +2035,7 @@
                     var d = (n.x * l.norV.x + n.y * l.norV.y);
                     if (0 <= d && d <= circle.r) //Touch
                     {
-                        if (d < minLD || minLD < 0)
-                        {
+                        if (d < minLD || minLD < 0) {
                             minL = l;
                             minLD = d;
                         }
@@ -2158,17 +2044,14 @@
             }
             minP = null;
             minPD = -1;
-            for (var i = 0; i < 4; i++)
-            {
+            for (var i = 0; i < 4; i++) {
                 var p = rect.V[i];
                 if (v2.x * p.norV.x + v2.y * p.norV.y > 0) //Away from Point
                     continue;
                 var n = new Vector2(circle.o.x - p.x, circle.o.y - p.y);
                 var d = n.mod();
-                if (0 <= d && d <= circle.r)
-                {
-                    if (d < minPD || minPD < 0)
-                    {
+                if (0 <= d && d <= circle.r) {
+                    if (d < minPD || minPD < 0) {
                         minP = p;
                         minPD = d;
                     }
@@ -2201,14 +2084,12 @@
 
             v1_ = Vector2.multi(vn, (m2 + e * m2) / (m1 + m2));
             v2_ = Vector2.multi(vn, (m2 - e * m1) / (m1 + m2));
-            if (target.collider.static)
-            {
+            if (target.collider.static) {
                 var dv = Vector2.minus(v1_, v1);
                 v1_.minus(dv);
                 v2_.minus(dv);
             }
-            else if (self.collider.static)
-            {
+            else if (self.collider.static) {
                 var dv = Vector2.minus(v2_, vn);
                 v1_.minus(dv);
                 v2_.minus(dv);
@@ -2221,8 +2102,7 @@
             target.v = v1_;
             self.v = v2_;
 
-            if (!circle.soft || !rect.soft)
-            {
+            if (!circle.soft || !rect.soft) {
                 d = Math.abs(d);
                 var dv = Math.abs(vn.mod());
                 var t = d / dv;
@@ -2234,15 +2114,21 @@
 
             }
         }
-        else if (target.collider instanceof Polygon)
-        {
+        else if (target.collider instanceof Polygon) {
             return target.collider.collide(target, self, dt);
         }
-        else
-        {
+        else {
             return;
             return target.collider.collide(target, self, dt);
         }
+    }
+    Circle.prototype.toGameObject = function (initCollider)
+    {
+        var gameObj = new GameObject();
+        gameObj.graphic = this;
+        if (initCollider)
+            gameObj.collider = this;
+        return gameObj;
     }
     Colliders.Circle = Circle;
     window.Circle = Circle;
@@ -2270,11 +2156,9 @@
         this.strokeWidth = 1;
         this.strokeStyle = new Color(0, 0, 0, 1);
         this.fillStyle = new Color(255, 255, 255, 1);
-        if (v instanceof Array)
-        {
+        if (v instanceof Array) {
             this.beginInit();
-            for (var i = 0; i < v.length; i++)
-            {
+            for (var i = 0; i < v.length; i++) {
                 this.addPoint(v[i]);
             }
             this.endInit();
@@ -2292,8 +2176,7 @@
     Polygon.prototype.copy = function ()
     {
         var v = [];
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             v[i] = new Point(this.V[i].x, this.V[i].y);
         }
         var pol = new Polygon(v);
@@ -2323,12 +2206,10 @@
     }
     Polygon.prototype.setCoordinate = function (coordinate)
     {
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             this.V[i].setCoordinate(coordinate);
         }
-        for (var i = 0; i < this.E.length; i++)
-        {
+        for (var i = 0; i < this.E.length; i++) {
             this.E[i].setCoordinate(coordinate);
         }
         this.position.setCoordinate(coordinate);
@@ -2337,12 +2218,10 @@
     }
     Polygon.prototype.changeCoordinate = function (coordinate)
     {
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             this.V[i].changeCoordinate(coordinate);
         }
-        for (var i = 0; i < this.E.length; i++)
-        {
+        for (var i = 0; i < this.E.length; i++) {
             this.E[i].changeCoordinate(coordinate);
         }
         this.position.changeCoordinate(coordinate);
@@ -2353,8 +2232,7 @@
     {
         var dx = x - this.position.x;
         var dy = y - this.position.y;
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             this.V[i].x += dx;
             this.V[i].y += dy;
         }
@@ -2363,13 +2241,11 @@
     }
     Polygon.prototype.rotate = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             this.V[i].rotate(rad, x, y);
         }
         this.position.rotate(rad, x, y);
@@ -2386,8 +2262,7 @@
         if (this.V.length < 3)
             throw new Error("3 or more points are required.");
         var sumX = 0, sumY = 0;
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             sumX += this.V[i].x;
             sumY += this.V[i].y;
         }
@@ -2403,15 +2278,13 @@
         if (!this.constructing)
             throw new Error("Polygon isn't constructing.");
         var i = this.V.length;
-        if (i >= 2)
-        {
+        if (i >= 2) {
             var n1 = new Vector2(this.V[i - 1].x - this.V[i - 2].x, this.V[i - 1].y - this.V[i - 2].y);
             var n2 = new Vector2(p.x - this.V[i - 1].x, p.y - this.V[i - 1].y);
             var d = n1.x * n2.y - n1.y * n2.x;
             if (!this.dir)
                 this.dir = d > 0 ? 1 : -1;
-            else if (d && this.dir * d < 0)
-            {
+            else if (d && this.dir * d < 0) {
                 this.convex = false;
             }
         }
@@ -2430,8 +2303,7 @@
         var d = n1.x * n2.y - n1.y * n2.x;
         if (d && d * this.dir < 0)
             this.convex = false;
-        for (var i = 0; i < this.V.length; i++)
-        {
+        for (var i = 0; i < this.V.length; i++) {
             var p1 = this.V[i];
             var p2 = this.V[(i + 1) % this.V.length];
             var l = new Line(p1, p2);
@@ -2458,8 +2330,7 @@
             throw new Error("The polygen must contains at least 3 points.");
         var v0 = this.V[0].coordinate.pFrom(this.V[0].x, this.V[0].y);
         graphics.moveTo(v0.x, v0.y);
-        for (var i = 1; i < this.V.length; i++)
-        {
+        for (var i = 1; i < this.V.length; i++) {
             var v = this.V[i].coordinate.pFrom(this.V[i].x, this.V[i].y);
             graphics.lineTo(v.x, v.y);
         }
@@ -2470,47 +2341,38 @@
         graphics.fill();
         graphics.stroke();
     }
-    Polygon.prototype.isCollideWith = function (col,v1,v2,dt)
+    Polygon.prototype.isCollideWith = function (col, v1, v2, dt)
     {
-        if (!(this.E instanceof Array))
-        {
+        if (!(this.E instanceof Array)) {
             throw new Error("Something wrong with this polygon");
         }
-        if (col instanceof Polygon)
-        {
+        if (col instanceof Polygon) {
 
-            if (!(col.E instanceof Array))
-            {
+            if (!(col.E instanceof Array)) {
                 throw new Error("Something wrong with the polygon");
             }
             for (var i = 0; i < this.E.length; i++)
-                for (var j = 0; j < col.E.length; j++)
-                {
+                for (var j = 0; j < col.E.length; j++) {
 
-                    if (this.E[i].isCross(col.E[j]))
-                    {
+                    if (this.E[i].isCross(col.E[j])) {
                         //alert("!");
                         return true;
                     }
                 }
             return false;
         }
-        else if (col instanceof Circle)
-        {
+        else if (col instanceof Circle) {
             //Collide with point
-            for (var i = 0; i < this.V.length; i++)
-            {
+            for (var i = 0; i < this.V.length; i++) {
                 var p = this.V[i];
                 var d = (col.o.x - p.x) * (col.o.x - p.x) + (col.o.y - p.y) * (col.o.y - p.y);
-                if (d <= col.r * col.r)
-                {
+                if (d <= col.r * col.r) {
 
                     return true;
                 }
             }
             //Collide with edge
-            for (var i = 0; i < this.E.length; i++)
-            {
+            for (var i = 0; i < this.E.length; i++) {
                 var l = this.E[i];
                 var n;
                 if (this.cw)
@@ -2530,31 +2392,25 @@
 
             return false;
         }
-        else if (col instanceof Rectangle)
-        {
-            if (!(col.E instanceof Array))
-            {
+        else if (col instanceof Rectangle) {
+            if (!(col.E instanceof Array)) {
                 throw new Error("Something wrong with the polygon");
             }
-            for (var i = 0; i < this.V.length; i++)
-            {
+            for (var i = 0; i < this.V.length; i++) {
                 if (col.isCollideWith(this.V[i]))
                     return true;
             }
             for (var i = 0; i < this.E.length; i++)
-                for (var j = 0; j < col.E.length; j++)
-                {
+                for (var j = 0; j < col.E.length; j++) {
 
-                    if (this.E[i].isCross(col.E[j]))
-                    {
+                    if (this.E[i].isCross(col.E[j])) {
                         //alert("!");
                         return true;
                     }
                 }
             return false;
         }
-        else if (col instanceof Particle)
-        {
+        else if (col instanceof Particle) {
             return col.isCollideWith(this, v2, v1, dt);
         }
         return false;
@@ -2565,26 +2421,23 @@
             return;
         if (self.collider.static && target.collider.static)
             return;
-        if (target.collider instanceof Circle)
-        {
+        if (target.collider instanceof Circle) {
             var args = new GameObject.CollideEventArgs();
             args.dff = Math.min(self.collider.dff, target.collider.dff);
             args.e = Math.min(self.collider.e, target.collider.e);
-            if (self.onCollide)
-            {
+            if (self.onCollide) {
                 args.target = target;
                 self.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            if (target.onCollide)
-            {
+            if (target.onCollide) {
                 args.target = self;
                 target.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            
+
             var e = args.e;
             var dff = args.dff;
             var poly = self.collider;
@@ -2593,8 +2446,7 @@
             var v2 = target.v;
             var minLD = -1, minPD = -1;
             var P, L;
-            for (var i = 0; i < poly.E.length; i++)
-            {
+            for (var i = 0; i < poly.E.length; i++) {
                 var l = poly.E[i];
                 var n;
                 if (!poly.cw)
@@ -2612,27 +2464,22 @@
                 var po = Vector2.fromPoint(l.p1, circle.o);
                 var dt = Vector2.multi(t, Vector2.multi(t, po)).mod();
                 var dn = Vector2.multi(po, n);
-                if (0 <= dn && dn <= circle.r && 0 <= dt && dt <= l.length)
-                {
-                    if (minLD < 0 || dn < minLD)
-                    {
+                if (0 <= dn && dn <= circle.r && 0 <= dt && dt <= l.length) {
+                    if (minLD < 0 || dn < minLD) {
                         minLD = dn;
                         L = l;
                     }
                 }
             }
-            for (var i = 0; i < poly.V.length; i++)
-            {
+            for (var i = 0; i < poly.V.length; i++) {
                 var p = poly.V[i];
                 var n = Vector2.fromPoint(p, circle.o);
                 n.multi(1 / n.mod());
                 if (Vector2.multi(n, dv) > 0)
                     continue;
                 var d = Point.Distance(p, circle.o);
-                if (0 <= d && d <= circle.r)
-                {
-                    if (minPD < 0 || d < minPD)
-                    {
+                if (0 <= d && d <= circle.r) {
+                    if (minPD < 0 || d < minPD) {
                         minPD = d;
                         P = p;
                     }
@@ -2650,8 +2497,7 @@
                 N.multi(1 / N.mod());
                 T = new Vector2(-N.y, N.x);
             }
-            else if (minPD < 0 || (minLD >= 0 && minLD < minPD))
-            {
+            else if (minPD < 0 || (minLD >= 0 && minLD < minPD)) {
                 d = circle.r - minLD;
                 N = L.norV;
                 T = l.tanV;
@@ -2668,14 +2514,12 @@
             v1_ = Vector2.multi(vn, (m2 + e * m2) / (m1 + m2));
             v2_ = Vector2.multi(vn, (m2 - e * m1) / (m1 + m2));
 
-            if (poly.static)
-            {
+            if (poly.static) {
                 var dv = Vector2.minus(v1_, v1);
                 v1_.minus(dv);
                 v2_.minus(dv);
             }
-            else if (circle.static)
-            {
+            else if (circle.static) {
                 var dv = Vector2.minus(v2_, vn);
                 v2_.minus(dv);
                 v1_.minus(dv);
@@ -2687,8 +2531,7 @@
             self.v = v1_;
             target.v = v2_;
 
-            if (!poly.soft || !circle.soft)
-            {
+            if (!poly.soft || !circle.soft) {
                 dv = Math.abs(Vector2.multi(dv, N));
                 var t = d / dv;
                 t = t > dt ? dt : t;
@@ -2697,20 +2540,17 @@
             }
 
         }
-        else if (target.collider instanceof Rectangle)
-        {
+        else if (target.collider instanceof Rectangle) {
             var args = new GameObject.CollideEventArgs();
             args.dff = Math.min(self.collider.dff, target.collider.dff);
             args.e = Math.min(self.collider.e, target.collider.e);
-            if (self.onCollide)
-            {
+            if (self.onCollide) {
                 args.target = target;
                 self.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            if (target.onCollide)
-            {
+            if (target.onCollide) {
                 args.target = self;
                 target.onCollide(args);
                 if (args.ignore)
@@ -2723,8 +2563,7 @@
             poly.obj = self;
             rect.obj = target;
             var maxD = 1, maxP = null, maxL = null;
-            for (var i = 0; i < poly.V.length; i++)
-            {
+            for (var i = 0; i < poly.V.length; i++) {
                 var p = poly.V[i];
 
                 var t = new Vector2(-(p.y - poly.center.y), (p.x - poly.center.x));
@@ -2736,21 +2575,18 @@
                 v.plus(Vector2.multi(target.v, -1));
                 var p0 = new Point(p.x - v.x * dt, p.y - v.y * dt);
                 var lp = new Line(p0, p);
-                for (var j = 0; j < rect.E.length; j++)
-                {
+                for (var j = 0; j < rect.E.length; j++) {
                     var l = rect.E[j];
                     if (!p.lines[0].isCross(l) && !p.lines[1].isCross(l))
                         continue;
                     var n = l.norV;
                     var t = new Vector2(l.p2.x - l.p1.x, l.p2.y - l.p1.y);
                     var p1p = new Vector2(p.x - l.p1.x, p.y - l.p1.y);
-                    if (Vector2.multi(n, v) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod())
-                    {
+                    if (Vector2.multi(n, v) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod()) {
 
 
                         var d = Vector2.multi(p1p, n);
-                        if (d < 0 && (d > maxD || maxD > 0))
-                        {
+                        if (d < 0 && (d > maxD || maxD > 0)) {
                             maxD = d;
                             maxP = p;
                             maxL = l;
@@ -2758,8 +2594,7 @@
                     }
                 }
             }
-            for (var i = 0; i < rect.V.length; i++)
-            {
+            for (var i = 0; i < rect.V.length; i++) {
                 var p = rect.V[i];
                 var v = target.v.copy();
                 v.plus(Vector2.multi(self.v, -1));
@@ -2770,8 +2605,7 @@
                 v.plus(vt1);
                 var p0 = new Point(p.x - v.x * dt, p.y - v.y * dt);
                 var lp = new Line(p0, p);
-                for (var j = 0; j < poly.E.length; j++)
-                {
+                for (var j = 0; j < poly.E.length; j++) {
                     var l = poly.E[j];
                     if (!p.lines[0].isCross(l) && !p.lines[1].isCross(l))
                         continue;
@@ -2782,12 +2616,10 @@
                         n = new Vector2((l.p1.y - l.p2.y), (l.p2.x - l.p1.x));
                     var t = new Vector2(l.p2.x - l.p1.x, l.p2.y - l.p1.y);
                     var p1p = new Vector2(p.x - l.p1.x, p.y - l.p1.y);
-                    if (Vector2.multi(v, n) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod())
-                    {
+                    if (Vector2.multi(v, n) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod()) {
 
                         var d = Vector2.multi(p1p, n) / n.mod();
-                        if (d < 0 && (d > maxD || maxD > 0))
-                        {
+                        if (d < 0 && (d > maxD || maxD > 0)) {
                             maxD = d;
                             maxP = p;
                             maxL = l;
@@ -2796,8 +2628,7 @@
                 }
 
             }
-            if (maxD > 0)
-            {
+            if (maxD > 0) {
                 return;
             }
             p = maxP;
@@ -2828,13 +2659,11 @@
             var t1 = new Vector2(-n1.y, n1.x);
             var t2 = new Vector2(-n2.y, n2.x);*/
             var N, T;
-            if (pol1 == rect)
-            {
+            if (pol1 == rect) {
                 N = maxL.norV;
                 T = maxL.tanV;
             }
-            else if (pol1 == poly)
-            {
+            else if (pol1 == poly) {
                 if (!pol1.cw)
                     N = new Vector2((l.p2.y - l.p1.y), (l.p1.x - l.p2.x));
                 else
@@ -2866,14 +2695,12 @@
             v1_ = Vector2.multi(vn, (m2 + e * m2) / (m1 + m2));
             v2_ = Vector2.multi(vn, (m2 - e * m1) / (m1 + m2));
 
-            if (pol1.static)
-            {
+            if (pol1.static) {
                 var dv = Vector2.minus(v1_, v1);
                 v1_.minus(dv);
                 v2_.minus(dv);
             }
-            else if (pol2.static)
-            {
+            else if (pol2.static) {
                 var dv = Vector2.minus(v2_, vn);
                 v2_.minus(dv);
                 v1_.minus(dv);
@@ -2902,8 +2729,7 @@
             obj1.v = v1_;
             obj2.v = v2_;
 
-            if (!pol1.soft || !pol2.soft)
-            {
+            if (!pol1.soft || !pol2.soft) {
                 var pl = Vector2.fromPoint(l.p1, p);
                 var d = Math.abs(Vector2.multi(pl, N));
                 dv = Math.abs(Vector2.multi(dv, N));
@@ -2913,20 +2739,17 @@
                 obj2.moveTo(obj2.position.x + obj2.v.x * t, obj2.position.y + obj2.v.y * t);
             }
         }
-        else if (target.collider instanceof Polygon)
-        {
+        else if (target.collider instanceof Polygon) {
             var args = new GameObject.CollideEventArgs();
             args.dff = Math.min(self.collider.dff, target.collider.dff);
             args.e = Math.min(self.collider.e, target.collider.e);
-            if (self.onCollide)
-            {
+            if (self.onCollide) {
                 args.target = target;
                 self.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            if (target.onCollide)
-            {
+            if (target.onCollide) {
                 args.target = self;
                 target.onCollide(args);
                 if (args.ignore)
@@ -2939,8 +2762,7 @@
             pol1.obj = self;
             pol2.obj = target;
             var maxD = 1, maxP = null, maxL = null;
-            for (var i = 0; i < pol1.V.length; i++)
-            {
+            for (var i = 0; i < pol1.V.length; i++) {
                 var p = pol1.V[i];
 
                 var t = new Vector2(-(p.y - pol1.center.y), (p.x - pol1.center.x));
@@ -2960,8 +2782,7 @@
                 var p0 = new Point(p.x - v.x * dt, p.y - v.y * dt);
                 var lp = new Line(p0, p);
                 //graphics.drawLine(p0.x,p0.y,p.x,p.y);
-                for (var j = 0; j < pol2.E.length; j++)
-                {
+                for (var j = 0; j < pol2.E.length; j++) {
                     var l = pol2.E[j];
                     if (!p.lines[0].isCross(l) && !p.lines[1].isCross(l))
                         continue;
@@ -2972,13 +2793,11 @@
                         n = new Vector2((l.p1.y - l.p2.y), (l.p2.x - l.p1.x));
                     var t = new Vector2(l.p2.x - l.p1.x, l.p2.y - l.p1.y);
                     var p1p = new Vector2(p.x - l.p1.x, p.y - l.p1.y);
-                    if (Vector2.multi(n, v) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod())
-                    {
+                    if (Vector2.multi(n, v) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod()) {
 
 
                         var d = Vector2.multi(p1p, n) / n.mod();
-                        if (d < 0 && (d > maxD || maxD > 0))
-                        {
+                        if (d < 0 && (d > maxD || maxD > 0)) {
                             maxD = d;
                             maxP = p;
                             maxL = l;
@@ -2986,8 +2805,7 @@
                     }
                 }
             }
-            for (var i = 0; i < pol2.V.length; i++)
-            {
+            for (var i = 0; i < pol2.V.length; i++) {
                 var p = pol2.V[i];
                 var t = new Vector2(-(p.y - pol2.center.y), (p.x - pol2.center.x));
                 var R = t.mod();
@@ -3005,8 +2823,7 @@
                 var p0 = new Point(p.x - v.x * dt, p.y - v.y * dt);
                 var lp = new Line(p0, p);
                 //graphics.drawLine(p0.x,p0.y,p.x,p.y);
-                for (var j = 0; j < pol1.E.length; j++)
-                {
+                for (var j = 0; j < pol1.E.length; j++) {
                     var l = pol1.E[j];
                     if (!p.lines[0].isCross(l) && !p.lines[1].isCross(l))
                         continue;
@@ -3017,12 +2834,10 @@
                         n = new Vector2((l.p1.y - l.p2.y), (l.p2.x - l.p1.x));
                     var t = new Vector2(l.p2.x - l.p1.x, l.p2.y - l.p1.y);
                     var p1p = new Vector2(p.x - l.p1.x, p.y - l.p1.y);
-                    if (Vector2.multi(v, n) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod())
-                    {
+                    if (Vector2.multi(v, n) < 0 && Vector2.multi(t, p1p) >= 0 && Vector2.multi(t, p1p) / t.mod() <= t.mod()) {
 
                         var d = Vector2.multi(p1p, n) / n.mod();
-                        if (d < 0 && (d > maxD || maxD > 0))
-                        {
+                        if (d < 0 && (d > maxD || maxD > 0)) {
                             maxD = d;
                             maxP = p;
                             maxL = l;
@@ -3031,8 +2846,7 @@
                 }
 
             }
-            if (maxD > 0)
-            {
+            if (maxD > 0) {
                 //alert("WTF");
                 return;
             }
@@ -3097,14 +2911,12 @@
             v1_ = Vector2.multi(vn, (m2 + e * m2) / (m1 + m2));
             v2_ = Vector2.multi(vn, (m2 - e * m1) / (m1 + m2));
 
-            if (pol1.static)
-            {
+            if (pol1.static) {
                 var dv = Vector2.minus(v1_, v1);
                 v1_.minus(dv);
                 v2_.minus(dv);
             }
-            else if (pol2.static)
-            {
+            else if (pol2.static) {
                 var dv = Vector2.minus(v2_, vn);
                 v2_.minus(dv);
                 v1_.minus(dv);
@@ -3133,8 +2945,7 @@
             obj1.v = v1_;
             obj2.v = v2_;
 
-            if (!pol1.soft || !pol2.soft)
-            {
+            if (!pol1.soft || !pol2.soft) {
                 var pl = Vector2.fromPoint(l.p1, p);
                 var d = Math.abs(Vector2.multi(pl, N));
                 dv = Math.abs(Vector2.multi(dv, N));
@@ -3189,8 +3000,7 @@
                 new Line(this.V[2], this.V[3]),
                 new Line(this.V[3], this.V[0])];
 
-        for (var i = 0; i < 4; i++)
-        {
+        for (var i = 0; i < 4; i++) {
             var p = this.V[i];
             p.norV = new Vector2(p.x - this.center.x, p.y - this.center.y);
             p.tanV = new Vector2(-p.norV.y, p.norV.x);
@@ -3289,8 +3099,7 @@
     {
         var dx = x - this.position.x;
         var dy = y - this.position.y;
-        for (var i = 0; i < 4; i++)
-        {
+        for (var i = 0; i < 4; i++) {
             this.V[i].x += dx;
             this.V[i].y += dy;
         }
@@ -3302,8 +3111,7 @@
     }
     Rectangle.prototype.rotate = function (rad, x, y)
     {
-        if (isNaN(x) || isNaN(y))
-        {
+        if (isNaN(x) || isNaN(y)) {
             x = this.center.x;
             y = this.center.y;
         }
@@ -3328,20 +3136,17 @@
         graphic.fillRect(o.x, o.y + this.height, this.width, this.height);
         graphic.strokeRect(o.x, o.y + this.height, this.width, this.height);
     }
-    Rectangle.prototype.isCollideWith = function (obj, v1,v2,dt)
+    Rectangle.prototype.isCollideWith = function (obj, v1, v2, dt)
     {
-        if (obj instanceof Ground)
-        {
+        if (obj instanceof Ground) {
             var o = new Point(this.o.x + this.center.x, this.o.y + this.center.y);
             return (!(o.x > obj.xR || o.x + this.width < obj.xL) && (o.y >= obj.y && obj.y >= o.y - this.height));
         }
-        else if (obj instanceof Wall)
-        {
+        else if (obj instanceof Wall) {
             var o = new Point(this.o.x + this.center.x, this.o.y + this.center.y);
             return (!(o.y - this.height > obj.yH || o.y < obj.yL) && (o.x <= obj.x && obj.x <= o.x + this.width));
         }
-        else if (obj instanceof Rectangle)
-        {
+        else if (obj instanceof Rectangle) {
             var o = new Point(this.o.x + this.center.x, this.o.y + this.center.y);
             var oTarget = new Point(obj.o.x + obj.center.x, obj.o.y + obj.center.y);
             if (o.x - obj.width <= oTarget.x && oTarget.x <= o.x + this.width
@@ -3353,17 +3158,15 @@
             var y1 = (oTarget.y - o.y) * (oTarget.y + obj.height - o.y);
             var y2 = (oTarget.y - (o.y + this.height)) * (oTarget.y + obj.height - (o.y + this.height));
             if (oTarget.x + obj.width < o.x || o.x + this.width < oTarget.x ||
-               oTarget.y - obj.height > o.y || o.y - this.height > oTarget.y)
-            {
+               oTarget.y - obj.height > o.y || o.y - this.height > oTarget.y) {
                 return false;
             }
             else
                 return true;
         }
-        else if (obj instanceof Point)
-        {
+        else if (obj instanceof Point) {
             var o = new Point(this.o.x + this.center.x, this.o.y + this.center.y);
-            if (o.x <= obj.x && obj.x <= o.x + this.width &&  o.y <= obj.y && obj.y <= o.y + this.height)
+            if (o.x <= obj.x && obj.x <= o.x + this.width && o.y <= obj.y && obj.y <= o.y + this.height)
                 return true;
             else
                 return false;
@@ -3372,8 +3175,7 @@
             return obj.isCollideWith(this);
         else if (obj instanceof Polygon)
             return obj.isCollideWith(this);
-        else if (obj instanceof Particle)
-        {
+        else if (obj instanceof Particle) {
             return obj.isCollideWith(this, v2, v1, dt);
         }
     }
@@ -3383,20 +3185,17 @@
             return;
         if (self.collider.static && target.collider.static)
             return;
-        if (target.collider instanceof Rectangle)
-        {
+        if (target.collider instanceof Rectangle) {
             var args = new GameObject.CollideEventArgs();
             args.dff = Math.min(self.collider.dff, target.collider.dff);
             args.e = Math.min(self.collider.e, target.collider.e);
-            if (self.onCollide)
-            {
+            if (self.onCollide) {
                 args.target = target;
                 self.onCollide(args);
                 if (args.ignore)
                     return;
             }
-            if (target.onCollide)
-            {
+            if (target.onCollide) {
                 args.target = self;
                 target.onCollide(args);
                 if (args.ignore)
@@ -3423,28 +3222,22 @@
 
                 }
             }*/
-            if (target.v.x - self.v.x < 0)
-            {
+            if (target.v.x - self.v.x < 0) {
                 dx = Math.abs((o1.x + rect1.width) - o2.x); //Distance from rect1.right to rect2.left
             }
-            else if (target.v.x - self.v.x > 0)
-            {
+            else if (target.v.x - self.v.x > 0) {
                 dx = Math.abs((o2.x + rect2.width) - o1.x); //Distance from rect1.left to rect2.right
             }
-            else if (target.v.x - self.v.x == 0)
-            {
+            else if (target.v.x - self.v.x == 0) {
                 dx = Math.min(Math.abs(o1.x + rect1.width - o2.x), Math.abs(o2.x + rect2.width - o1.x)); //Get min distance
             }
-            if (target.v.y - self.v.y < 0)
-            {
+            if (target.v.y - self.v.y < 0) {
                 dy = Math.abs((o1.y + rect1.height) - o2.y); //Distance from rect1.top to rect2.bottom
             }
-            else if (target.v.y - self.v.y > 0)
-            {
+            else if (target.v.y - self.v.y > 0) {
                 dy = Math.abs((o2.y + rect2.height) - o1.y); //Distance from rect1.bottom to rect2.top
             }
-            else if (target.v.y - self.v.y == 0)
-            {
+            else if (target.v.y - self.v.y == 0) {
                 dy = Math.min(Math.abs(o1.y + rect1.height - o2.y), Math.abs(o2.y + rect2.height - o1.y)); //Get min distance
             }
             if ((dx >= 0 && dx <= dy) || dy < 0) //Collide x
@@ -3452,14 +3245,12 @@
                 var v1x = v2.x * ((m2 + e * m2) / (m1 + m2));
                 var v2x = v2.x * ((m2 - e * m1) / (m1 + m2));
 
-                if (rect1.static)
-                {
+                if (rect1.static) {
                     var dv = v1x - v1.x;
                     v1x -= dv;
                     v2x -= dv;
                 }
-                else if (rect2.static)
-                {
+                else if (rect2.static) {
                     var dv = v2x - v2.x;
                     v1x -= dv;
                     v2x -= dv;
@@ -3473,8 +3264,7 @@
                 self.v = v1;
                 target.v = v2;
 
-                if (!rect1.soft || !rect2.soft)
-                {
+                if (!rect1.soft || !rect2.soft) {
                     var d = Math.abs(dx);
                     var t = Math.abs(d / dv);
                     t = t > dt ? dt : t;
@@ -3487,14 +3277,12 @@
                 var v1y = v2.y * ((m2 + e * m2) / (m1 + m2));
                 var v2y = v2.y * ((m2 - e * m1) / (m1 + m2));
 
-                if (rect1.static)
-                {
+                if (rect1.static) {
                     var dv = v1y - v1.y;
                     v1y -= dv;
                     v2y -= dv;
                 }
-                else if (rect2.static)
-                {
+                else if (rect2.static) {
                     var dv = v2y - v2.y;
                     v1y -= dv;
                     v2y -= dv;
@@ -3511,8 +3299,7 @@
                 self.v = v1;
                 target.v = v2;
 
-                if (!rect1.soft || !rect2.soft)
-                {
+                if (!rect1.soft || !rect2.soft) {
                     var d = dy;
                     var t = Math.abs(d / dv);
                     t = t > dt ? dt : t;
@@ -3521,10 +3308,8 @@
                 }
             }
         }
-        else if (target.collider instanceof Ground)
-        {
-            if (self.collider.o.y - self.collider.height <= target.collider.y)
-            {
+        else if (target.collider instanceof Ground) {
+            if (self.collider.o.y - self.collider.height <= target.collider.y) {
                 var t = (self.collider.o.y - self.collider.height - target.collider.y) / self.v.y;
                 t = isNaN(t) ? 0 : t;
                 self.moveTo(self.position.x, self.position.y - self.v.y * t);
@@ -3533,16 +3318,13 @@
                     self.collider.landed = true;
             }
         }
-        else if (target.collider instanceof Wall)
-        {
+        else if (target.collider instanceof Wall) {
 
         }
-        else if (target.collider instanceof Circle)
-        {
+        else if (target.collider instanceof Circle) {
             return target.collider.collide(target, self, dt);
         }
-        else if (target.collider instanceof Polygon)
-        {
+        else if (target.collider instanceof Polygon) {
             return target.collider.collide(target, self, dt);
         }
     }
