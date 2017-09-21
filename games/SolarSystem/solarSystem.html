@@ -8,11 +8,12 @@
     <script src="SarEngine2D.GUI.js"></script>
     <script src="jquery.min.js"></script>
     <style>
-        body{
+        body {
             margin: 0px;
             padding: 0px;
         }
-        #solar-system{
+
+        #solar-system {
             height: 100vh;
             width: 100vw;
         }
@@ -30,102 +31,163 @@
         var camera = scene.cameraList[0];
         var display = camera.displayList[0];
         engine.start()
-		camera.zoomTo(0.4);
+        camera.zoomTo(1);
 
-        var sun = new Circle(50);
-        sun.strokeStyle = Color.fromString("transparent");
+        var earthOrbit = 150;
+        var earthRadius = 10;
+        var earthAngV = 1;
+
+        var sun = new Circle(40);
+        keStyle = Color.fromString("transparent");
         sun.fillStyle = "#fff06b";
         var obj = new GameObject();
         obj.graphic = sun;
         sun = obj;
         scene.addGameObject(sun);
 
-        var mercury = new Circle(5.47);
+        var h = 0.5;
+        var mercury = new Circle(0.547 * earthRadius);
         mercury.strokeStyle = Color.fromString("transparent");
         mercury.fillStyle = "#a0a0a0";
         var obj = new GameObject();
         obj.graphic = mercury;
         mercury = obj;
-        mercury.moveTo(90, 0);
+        mercury.moveTo(h * earthOrbit, 0);
         mercury.setCenter(0, 0);
-        mercury.angV = 4.15;
+        mercury.angV = earthAngV / Math.sqrt(Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(mercury);
 
-        var venus = new Circle(9.6);
+        var h = 0.7;
+        var venus = new Circle(0.7 * earthRadius);
         venus.strokeStyle = Color.fromString("transparent");
         venus.fillStyle = "#eae5cf";
         var obj = new GameObject();
         obj.graphic = venus;
         venus = obj;
-        venus.moveTo(120, 0);
+        venus.moveTo(h * earthOrbit, 0);
         venus.setCenter(0, 0);
-        venus.angV = 1.625;
+        venus.angV = earthAngV / Math.sqrt(Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(venus);
 
-        var earth = new Circle(10);
+
+        var earth = new Circle(earthRadius);
         earth.strokeStyle = Color.fromString("transparent");
         earth.fillStyle = "#6db5ff";
         var obj = new GameObject();
         obj.graphic = earth;
         earth = obj;
-        earth.moveTo(150, 0);
+        earth.moveTo(earthOrbit, 0);
         earth.setCenter(0, 0);
-        earth.angV = 1;
+        earth.angV = earthAngV;
+        var orbit = new Circle(earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(earth);
+        var moon = new Circle(0.23 * earthRadius);
+        moon.strokeStyle = Color.fromString("transparent");
+        moon.fillStyle = "#ffffe5";
+        moon = moon.toGameObject();
+        moon.moveTo(earthOrbit + 20, 0);
+        moon.setCenter(earthOrbit, 0);
+        moon.angV = 10;
+        moon.linkTo(earth);
+        scene.addGameObject(moon);
 
-        var mars = new Circle(7.3);
+        var h = 1.4;
+        var mars = new Circle(0.73*earthRadius);
         mars.strokeStyle = Color.fromString("transparent");
         mars.fillStyle = "#ffbe6d";
         var obj = new GameObject();
         obj.graphic = mars;
         mars = obj;
-        mars.moveTo(210, 0);
+        mars.moveTo(h * earthOrbit, 0);
         mars.setCenter(0, 0);
-        mars.angV = 0.468;
+        mars.angV = earthAngV / Math.sqrt( Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(mars);
 
-        var jupiter = new Circle(30);
+        var h = 1.9;
+        var jupiter = new Circle(2 * earthRadius);
         jupiter.strokeStyle = Color.fromString("transparent");
         jupiter.fillStyle = "#ffe3bf";
         var obj = new GameObject();
         obj.graphic = jupiter;
         jupiter = obj;
-        jupiter.moveTo(300, 0);
+        jupiter.moveTo(h * earthOrbit, 0);
         jupiter.setCenter(0, 0);
-        jupiter.angV = 0.084;
+        jupiter.angV = earthAngV / Math.sqrt(Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(jupiter);
 
-        var saturnian = new Circle(27);
+        var h = 2.5;
+        var saturnian = new Circle(1.7 * earthRadius);
         saturnian.strokeStyle = Color.fromString("transparent");
         saturnian.fillStyle = "#fdeeb7";
         var obj = new GameObject();
         obj.graphic = saturnian;
         saturnian = obj;
-        saturnian.moveTo(400, 0);
+        saturnian.moveTo(h * earthOrbit, 0);
         saturnian.setCenter(0, 0);
-        saturnian.angV = 0.033;
+        saturnian.angV = earthAngV / Math.sqrt(Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(saturnian);
 
-        var uranian = new Circle(20);
+        var h = 3.2;
+        var uranian = new Circle(1.5*earthRadius);
         uranian.strokeStyle = Color.fromString("transparent");
         uranian.fillStyle = "#c5fcff";
         var obj = new GameObject();
         obj.graphic = uranian;
         uranian = obj;
-        uranian.moveTo(500, 0);
+        uranian.moveTo(h * earthOrbit, 0);
         uranian.setCenter(0, 0);
-        uranian.angV = 0.011;
+        uranian.angV = earthAngV / Math.sqrt(Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(uranian);
 
-        var neptunian = new Circle(18);
+        var h = 4;
+        var neptunian = new Circle(1.3 * earthRadius);
         neptunian.strokeStyle = Color.fromString("transparent");
         neptunian.fillStyle = "#c5fcff";
         var obj = new GameObject();
         obj.graphic = neptunian;
         neptunian = obj;
-        neptunian.moveTo(600, 0);
+        neptunian.moveTo(h * earthOrbit, 0);
         neptunian.setCenter(0, 0);
-        neptunian.angV = 0.006;
+        neptunian.angV = earthAngV / Math.sqrt(Math.pow(h, 3));
+        var orbit = new Circle(h * earthOrbit);
+        orbit.strokeStyle = new Color(255, 255, 255, 0.2);
+        orbit.strokeWidth = 1;
+        orbit.fillStyle = Color.fromString("transparent");
+        scene.addGameObject(orbit.toGameObject());
         scene.addGameObject(neptunian);
 
     </script>
